@@ -3,58 +3,47 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>波羅的海四國10日自駕旅行計劃 — 香港出發 2026</title>
+<title>波羅的海三國10日旅行計劃 — 香港出發 2026</title>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { font-family: -apple-system, BlinkMacSystemFont, "PingFang TC", "Noto Sans TC", "Microsoft YaHei", sans-serif; background: #f0f4f8; color: #1a202c; line-height: 1.6; }
 
-/* Header */
 .hero { background: linear-gradient(135deg, #1e3a5f 0%, #2d6a9f 40%, #4a9db5 70%, #8fc9b9 100%); color: #fff; padding: 48px 24px 40px; text-align: center; }
 .hero h1 { font-size: 2.2rem; font-weight: 800; margin-bottom: 8px; letter-spacing: -0.5px; }
 .hero .subtitle { font-size: 1.05rem; opacity: 0.9; margin-bottom: 16px; }
 .hero .flags { font-size: 2rem; margin-bottom: 12px; letter-spacing: 8px; }
 .hero .date-badge { display: inline-block; background: rgba(255,255,255,0.18); border: 1px solid rgba(255,255,255,0.3); border-radius: 24px; padding: 6px 20px; font-size: 0.95rem; }
 
-/* Quick stats */
 .quick-stats { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; padding: 20px 24px; max-width: 900px; margin: -20px auto 0; position: relative; z-index: 2; }
 .quick-stats .stat { background: #fff; border-radius: 12px; padding: 14px 20px; box-shadow: 0 2px 12px rgba(0,0,0,0.08); font-size: 0.9rem; text-align: center; min-width: 100px; }
 .stat strong { display: block; font-size: 1.3rem; color: #1e3a5f; }
 
-/* Layout */
 .main-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 0; max-width: 1400px; margin: 24px auto 0; padding: 0 16px; }
 @media (max-width: 900px) { .main-layout { grid-template-columns: 1fr; } }
 
-/* Map */
 .map-panel { position: sticky; top: 16px; height: calc(100vh - 48px); }
 @media (max-width: 900px) { .map-panel { position: relative; top: auto; height: 50vh; } }
 .map-panel .panel-label { background: #fff; padding: 8px 16px; border-radius: 10px 10px 0 0; font-weight: 700; font-size: 0.9rem; color: #1e3a5f; border: 1px solid #e2e8f0; border-bottom: none; display: flex; align-items: center; gap: 8px; }
 #map { height: calc(100% - 41px); border-radius: 0 0 10px 10px; border: 1px solid #e2e8f0; z-index: 1; }
 
-/* Legend */
 .map-legend { position: absolute; bottom: 20px; right: 20px; z-index: 1000; background: #fff; padding: 10px 14px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.15); font-size: 0.8rem; line-height: 2; }
 .legend-dot { display: inline-block; width: 12px; height: 12px; border-radius: 50%; margin-right: 6px; vertical-align: middle; }
 .legend-line { display: inline-block; width: 24px; height: 3px; margin-right: 6px; vertical-align: middle; border-radius: 2px; }
 
-/* Custom marker styles */
-
-/* Map marker number badges in itinerary */
 .mk-badge { display: inline-block; width: 18px; height: 18px; border-radius: 50%; color: #fff; font-size: 0.62rem; font-weight: 700; text-align: center; line-height: 18px; vertical-align: middle; margin: 0 2px; position: relative; top: -1px; }
 .mk-sweden { background: #006aa7; }
 .mk-finland { background: #003580; }
 .mk-estonia { background: #0072ce; }
-.mk-latvia { background: #9e3039; }
 @media (max-width: 900px) { .mk-badge { width: 15px; height: 15px; font-size: 0.55rem; line-height: 15px; } }
-  .custom-marker { display: flex; align-items: center; justify-content: center; width: 30px; height: 30px; border-radius: 50%; color: #fff; font-weight: 700; font-size: 0.75rem; border: 3px solid #fff; box-shadow: 0 2px 6px rgba(0,0,0,0.3); }
+.custom-marker { display: flex; align-items: center; justify-content: center; width: 30px; height: 30px; border-radius: 50%; color: #fff; font-weight: 700; font-size: 0.75rem; border: 3px solid #fff; box-shadow: 0 2px 6px rgba(0,0,0,0.3); }
 .marker-sweden { background: #006aa7; }
 .marker-finland { background: #003580; }
 .marker-estonia { background: #0072ce; }
-.marker-latvia { background: #9e3039; }
 .marker-transport { background: #555; }
 .marker-hk { background: #ba0c2f; }
 
-/* Leaflet popup */
 .leaflet-popup-content { margin: 10px 14px; font-size: 0.9rem; line-height: 1.5; min-width: 220px; }
 .leaflet-popup-content img { width: 100%; height: 130px; object-fit: cover; border-radius: 6px; margin-bottom: 8px; background: #e2e8f0; }
 .leaflet-popup-content .popup-title { font-weight: 700; font-size: 1rem; color: #1e3a5f; }
@@ -63,13 +52,11 @@ body { font-family: -apple-system, BlinkMacSystemFont, "PingFang TC", "Noto Sans
 .leaflet-popup-content .popup-link:hover { text-decoration: underline; }
 .popup-img-fallback { display: flex; align-items: center; justify-content: center; width: 100%; height: 130px; background: #e2e8f0; border-radius: 6px; margin-bottom: 8px; font-size: 2.5rem; color: #94a3b8; }
 
-/* Itinerary panel */
 .itinerary-panel { padding: 0 0 40px 20px; overflow-y: auto; }
 @media (max-width: 900px) { .itinerary-panel { padding: 16px 16px 40px; } }
 .section-title { font-size: 1.3rem; font-weight: 700; color: #1e3a5f; margin: 28px 0 16px; display: flex; align-items: center; gap: 8px; }
 .section-title i { color: #2d6a9f; }
 
-/* Day card */
 .day-card { background: #fff; border-radius: 12px; padding: 20px 24px; margin-bottom: 14px; box-shadow: 0 1px 8px rgba(0,0,0,0.06); border-left: 5px solid #ccc; transition: box-shadow 0.2s, transform 0.15s; cursor: pointer; }
 .day-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.1); transform: translateY(-1px); }
 .day-card:active { transform: scale(0.995); }
@@ -78,7 +65,6 @@ body { font-family: -apple-system, BlinkMacSystemFont, "PingFang TC", "Noto Sans
 .day-card.day-sweden { border-left-color: #006aa7; }
 .day-card.day-finland { border-left-color: #003580; }
 .day-card.day-estonia { border-left-color: #0072ce; }
-.day-card.day-latvia { border-left-color: #9e3039; }
 .day-card.day-transit { border-left-color: #f59e0b; }
 .day-card.day-flight { border-left-color: #8b5cf6; }
 .day-header { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
@@ -88,7 +74,6 @@ body { font-family: -apple-system, BlinkMacSystemFont, "PingFang TC", "Noto Sans
 .country-sweden { background: #006aa7; }
 .country-finland { background: #003580; }
 .country-estonia { background: #0072ce; }
-.country-latvia { background: #9e3039; }
 .country-transit { background: #64748b; }
 .day-route { font-size: 0.85rem; color: #475569; margin-bottom: 10px; }
 .day-activities { list-style: none; padding: 0; }
@@ -97,7 +82,6 @@ body { font-family: -apple-system, BlinkMacSystemFont, "PingFang TC", "Noto Sans
 .day-transport { margin-top: 10px; padding: 8px 12px; background: #f1f5f9; border-radius: 8px; font-size: 0.85rem; display: flex; align-items: center; gap: 8px; color: #475569; }
 .day-transport i { color: #f59e0b; }
 
-/* Transport overview */
 .transport-section { max-width: 1400px; margin: 0 auto; padding: 0 16px 40px; }
 .transport-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 16px; }
 .transport-card { background: #fff; border-radius: 12px; padding: 20px 24px; box-shadow: 0 1px 8px rgba(0,0,0,0.06); }
@@ -107,12 +91,10 @@ body { font-family: -apple-system, BlinkMacSystemFont, "PingFang TC", "Noto Sans
 .flight-row .flight-time { color: #64748b; font-size: 0.8rem; }
 .transport-card .note { font-size: 0.8rem; color: #94a3b8; margin-top: 8px; }
 
-/* Footer */
 footer { text-align: center; padding: 32px 16px; color: #94a3b8; font-size: 0.8rem; border-top: 1px solid #e2e8f0; max-width: 1400px; margin: 0 auto; }
 footer a { color: #2d6a9f; text-decoration: none; }
 footer a:hover { text-decoration: underline; }
 
-/* Scrollbar */
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
@@ -120,41 +102,35 @@ footer a:hover { text-decoration: underline; }
 </head>
 <body>
 
-<!-- Hero -->
 <div class="hero">
-  <div class="flags">🇭🇰 ✈ 🇸🇪 🚢 🇫🇮 🚢 🇪🇪 🚗 🇱🇻 ✈ 🇭🇰</div>
-  <h1>波羅的海四國 · 10日自駕旅行計劃</h1>
-  <p class="subtitle">香港出發 — 瑞典 · 芬蘭 · 愛沙尼亞 · 拉脫維亞</p>
-  <span class="date-badge">📅 2026年8月28日 (五) – 9月7日 (一)</span>
+  <div class="flags">🇭🇰 ✈ 🇫🇮 🚢 🇪🇪 🚢 🇫🇮 🚢 🇸🇪 ✈ 🇭🇰</div>
+  <h1>波羅的海三國 · 10日旅行計劃</h1>
+  <p class="subtitle">香港出發 — 愛沙尼亞 · 芬蘭 · 瑞典</p>
+  <span class="date-badge">📅 2026年8月28日 (五) – 9月6日 (日)</span>
 </div>
 
 <div class="quick-stats">
-  <div class="stat"><strong>4</strong>個國家</div>
+  <div class="stat"><strong>3</strong>個國家</div>
   <div class="stat"><strong>10</strong>天行程</div>
   <div class="stat"><strong>2</strong>程航班</div>
-  <div class="stat"><strong>2</strong>段渡輪</div>
-  <div class="stat"><strong>~310km</strong>自駕里程</div>
-  <div class="stat"><strong>20+</strong>精選景點</div>
+  <div class="stat"><strong>3</strong>段渡輪</div>
+  <div class="stat"><strong>4</strong>座城市</div>
+  <div class="stat"><strong>16+</strong>精選景點</div>
 </div>
 
-<!-- Main layout: Map + Itinerary -->
 <div class="main-layout">
-  <!-- Map panel -->
   <div class="map-panel">
     <div class="panel-label"><i class="fa-solid fa-map-location-dot"></i> 互動地圖 — 點擊標記查看景點詳情</div>
     <div id="map"></div>
     <div class="map-legend">
-      <div><span class="legend-dot" style="background:#006aa7;"></span> 瑞典景點</div>
-      <div><span class="legend-dot" style="background:#003580;"></span> 芬蘭景點</div>
       <div><span class="legend-dot" style="background:#0072ce;"></span> 愛沙尼亞景點</div>
-      <div><span class="legend-dot" style="background:#9e3039;"></span> 拉脫維亞景點</div>
-      <div><span class="legend-line" style="background:#8b5cf6; border: 1px dashed #8b5cf6; background: transparent; height:0; border-top:2px dashed #8b5cf6;"></span> 飛行路線</div>
-      <div><span class="legend-line" style="background:#f59e0b; border: 1px dashed #f59e0b; background: transparent; height:0; border-top:2px dashed #f59e0b;"></span> 渡輪航線</div>
-      <div><span class="legend-line" style="background:#10b981;"></span> 自駕路線</div>
+      <div><span class="legend-dot" style="background:#003580;"></span> 芬蘭景點</div>
+      <div><span class="legend-dot" style="background:#006aa7;"></span> 瑞典景點</div>
+      <div><span class="legend-line" style="border-top:2px dashed #8b5cf6; height:0; display:inline-block;"></span> 飛行路線</div>
+      <div><span class="legend-line" style="border-top:2px dashed #f59e0b; height:0; display:inline-block;"></span> 渡輪航線</div>
     </div>
   </div>
 
-  <!-- Itinerary panel -->
   <div class="itinerary-panel">
     <div class="section-title"><i class="fa-solid fa-calendar-days"></i> 每日行程</div>
 
@@ -164,60 +140,62 @@ footer a:hover { text-decoration: underline; }
         <div><span class="day-num">Day 1</span><br><span class="day-date">8月28日 星期五</span></div>
         <span class="day-country country-transit">✈ 飛行中</span>
       </div>
-      <div class="day-route">🇭🇰 香港 → 🇫🇮 赫爾辛基 → 🇸🇪 斯德哥爾摩</div>
+      <div class="day-route">🇭🇰 香港 → 🇫🇮 赫爾辛基（夜機）</div>
       <ul class="day-activities">
         <li><i class="fa-solid fa-plane-departure"></i> <strong>AY100</strong> 香港(HKG) 20:55 起飛 → 赫爾辛基(HEL) 05:35 (+1)<br><small style="color:#64748b">Finnair Airbus A350-900 · 飛行時間 13h40m</small></li>
       </ul>
-      <div class="day-transport"><i class="fa-solid fa-clock"></i> 總交通時間：~16-17 小時（含中轉）</div>
+      <div class="day-transport"><i class="fa-solid fa-clock"></i> ✈ 夜機 · 機上過夜</div>
     </div>
 
     <!-- Day 2 -->
-    <div class="day-card day-sweden">
+    <div class="day-card day-transit">
       <div class="day-header">
         <div><span class="day-num">Day 2</span><br><span class="day-date">8月29日 星期六</span></div>
-        <span class="day-country country-sweden">🇸🇪 瑞典</span>
+        <span class="day-country country-estonia">🇫🇮→🇪🇪</span>
       </div>
-      <div class="day-route">抵達斯德哥爾摩 · Gamla Stan 老城初探</div>
+      <div class="day-route">抵達赫爾辛基 → 渡輪直達塔林 · 老城初探</div>
       <ul class="day-activities">
-        <li><i class="fa-solid fa-plane-arrival"></i> <strong>AY803</strong> 赫爾辛基(HEL) 07:55 → 斯德哥爾摩(ARN) 08:05</li>
-        <li><i class="fa-solid fa-train-subway"></i> Arlanda Express 機場快線 → 市中心 (20分鐘)</li>
-        <li><i class="fa-solid fa-person-walking"></i> <strong>Gamla Stan 老城</strong> <sup class="mk-badge mk-sweden">2</sup> — 歐洲保存最完好的中世紀古城之一，鵝卵石小巷、彩色建築</li>
-        <li><i class="fa-solid fa-landmark"></i> Stortorget 大廣場 — 諾貝爾博物館所在地，經典彩色立面拍照點</li>
-        <li><i class="fa-solid fa-mug-hot"></i> 瑞典 Fika 咖啡時光 — 肉桂卷 + 咖啡，體驗瑞典式下午茶</li>
+        <li><i class="fa-solid fa-plane-arrival"></i> 05:35 抵達赫爾辛基 · 機場快線 → 市中心 (30min)</li>
+        <li><i class="fa-solid fa-ship"></i> 前往 <strong>赫爾辛基西港</strong> · 搭早班渡輪 → 塔林 (約 2 小時)</li>
+        <li><i class="fa-solid fa-anchor"></i> 抵達 <strong>塔林客運碼頭</strong> <sup class="mk-badge mk-estonia">1</sup> · 步行 15 分鐘到老城</li>
+        <li><i class="fa-solid fa-person-walking"></i> <strong>塔林老城</strong> <sup class="mk-badge mk-estonia">2</sup> — UNESCO 世界遺產，歐洲保存最完好的中世紀古城</li>
+        <li><i class="fa-solid fa-door-open"></i> Viru Gate 維魯門 — 老城入口，夕陽下最美</li>
       </ul>
-      <div class="day-transport"><i class="fa-solid fa-clock"></i> 市內步行可達 · Arlanda Express 20min</div>
+      <div class="day-transport"><i class="fa-solid fa-clock"></i> ✈ 抵達 + 🚢 赫爾辛基 → 塔林 ~2hr · Tallink Megastar</div>
     </div>
 
     <!-- Day 3 -->
-    <div class="day-card day-sweden">
+    <div class="day-card day-estonia">
       <div class="day-header">
         <div><span class="day-num">Day 3</span><br><span class="day-date">8月30日 星期日</span></div>
-        <span class="day-country country-sweden">🇸🇪 瑞典</span>
+        <span class="day-country country-estonia">🇪🇪 愛沙尼亞</span>
       </div>
-      <div class="day-route">斯德哥爾摩全日深度遊</div>
+      <div class="day-route">塔林全日深度遊</div>
       <ul class="day-activities">
-        <li><i class="fa-solid fa-crown"></i> <strong>瑞典皇宮 Kungliga Slottet</strong> <sup class="mk-badge mk-sweden">3</sup> — 歐洲最大宮殿之一，12:15 衛兵換崗儀式 (週日13:15)</li>
-        <li><i class="fa-solid fa-church"></i> <strong>斯德哥爾摩大教堂 Storkyrkan</strong> — 老城最古老教堂，聖喬治屠龍雕像</li>
-        <li><i class="fa-solid fa-ship"></i> <strong>瓦薩博物館 Vasamuseet</strong> <sup class="mk-badge mk-sweden">4</sup> — 17世紀沉船完整打撈，世界唯一保存完好的古戰船</li>
-        <li><i class="fa-solid fa-building-columns"></i> <strong>市政廳 Stadshuset</strong> <sup class="mk-badge mk-sweden">5</sup> — 諾貝爾獎晚宴場地，登塔俯瞰全城</li>
-        <li><i class="fa-solid fa-archway"></i> Mårten Trotzigs Gränd — 全城最窄小巷 (僅90cm寬)</li>
+        <li><i class="fa-solid fa-hill-rockslide"></i> <strong>座堂山 Toompea</strong> <sup class="mk-badge mk-estonia">3</sup> — 制高點俯瞰全城紅色屋頂與波羅的海</li>
+        <li><i class="fa-solid fa-church"></i> <strong>亞歷山大·涅夫斯基主教座堂</strong> <sup class="mk-badge mk-estonia">4</sup> — 標誌性東正教洋蔥圓頂</li>
+        <li><i class="fa-solid fa-tower-observation"></i> <strong>St. Olaf's Tower</strong> — 258級台階登頂，最佳全景 (曾是世界最高建築!)</li>
+        <li><i class="fa-solid fa-landmark"></i> <strong>市政廳廣場 Raekoja Plats</strong> — 中世紀市集氛圍，歐洲最古老的仍在運作的藥局</li>
+        <li><i class="fa-solid fa-palette"></i> <strong>Telliskivi 創意城</strong> — 前工業區改造，街頭藝術、獨立設計、精釀啤酒</li>
+        <li><i class="fa-solid fa-utensils"></i> 晚餐推薦：<strong>Rataskaevu 16</strong> 傳統愛沙尼亞菜</li>
       </ul>
-      <div class="day-transport"><i class="fa-solid fa-clock"></i> 步行 + 地鐵 (SL Access Card 24hr)</div>
+      <div class="day-transport"><i class="fa-solid fa-clock"></i> 全程步行 · 塔林老城非常緊湊且行人友善</div>
     </div>
 
     <!-- Day 4 -->
     <div class="day-card day-transit">
       <div class="day-header">
         <div><span class="day-num">Day 4</span><br><span class="day-date">8月31日 星期一</span></div>
-        <span class="day-country country-transit">🚢 海上</span>
+        <span class="day-country country-estonia">🇪🇪→🇫🇮</span>
       </div>
-      <div class="day-route">斯德哥爾摩半日 + 登過夜渡輪 → 赫爾辛基</div>
+      <div class="day-route">塔林悠閒上午 → 渡輪返回赫爾辛基</div>
       <ul class="day-activities">
-        <li><i class="fa-solid fa-camera"></i> 上午：Monteliusvägen 觀景台俯瞰老城全景</li>
-        <li><i class="fa-solid fa-shop"></i> <strong>Östermalmshallen 市場</strong> — 百年室內市場，瑞典海鮮與肉丸午餐</li>
-        <li><i class="fa-solid fa-ship"></i> 16:45 登船 — <strong>Tallink Silja Line / Viking Line</strong> 過夜渡輪</li>
+        <li><i class="fa-solid fa-camera"></i> 上午：塔林老城最後漫步，Kiek in de Kök 炮塔博物館</li>
+        <li><i class="fa-solid fa-shop"></i> 老城手工藝紀念品 — 愛沙尼亞羊毛製品、手工朱古力</li>
+        <li><i class="fa-solid fa-ship"></i> 午後 Tallink Megastar 塔林 → <strong>赫爾辛基西港</strong> <sup class="mk-badge mk-finland">5</sup> (2hr)</li>
+        <li><i class="fa-solid fa-church"></i> 傍晚：<strong>赫爾辛基大教堂</strong> <sup class="mk-badge mk-finland">6</sup> 參議院廣場夜間外觀</li>
       </ul>
-      <div class="day-transport"><i class="fa-solid fa-ferry"></i> 🚢 斯德哥爾摩 → 赫爾辛基 · 約 17 小時 · 傍晚上船，次日 10:00 抵達 · 船上含艙房、餐廳、免稅店</div>
+      <div class="day-transport"><i class="fa-solid fa-clock"></i> 🚢 塔林 → 赫爾辛基 · 約 2 小時</div>
     </div>
 
     <!-- Day 5 -->
@@ -226,13 +204,13 @@ footer a:hover { text-decoration: underline; }
         <div><span class="day-num">Day 5</span><br><span class="day-date">9月1日 星期二</span></div>
         <span class="day-country country-finland">🇫🇮 芬蘭</span>
       </div>
-      <div class="day-route">抵達赫爾辛基 · 全日市區探索</div>
+      <div class="day-route">赫爾辛基全日探索 (Day 1)</div>
       <ul class="day-activities">
-        <li><i class="fa-solid fa-anchor"></i> 10:00 渡輪抵達赫爾辛基</li>
-        <li><i class="fa-solid fa-church"></i> <strong>赫爾辛基大教堂 + 參議院廣場</strong> <sup class="mk-badge mk-finland">7</sup> — 白色新古典主義地標，芬蘭最有名的建築</li>
-        <li><i class="fa-solid fa-store"></i> <strong>市集廣場 Kauppatori</strong> <sup class="mk-badge mk-finland">10</sup> — 波羅的海鮮魚湯 Lohikeitto、馴鹿肉、當地手工藝</li>
-        <li><i class="fa-solid fa-ferry"></i> <strong>芬蘭堡 Suomenlinna</strong> <sup class="mk-badge mk-finland">8</sup> — UNESCO 世界遺產海上要塞 (市集廣場搭渡輪15分鐘)</li>
-        <li><i class="fa-solid fa-hot-tub"></i> <strong>Löyly 桑拿</strong> <sup class="mk-badge mk-finland">11</sup> — 設計感海濱桑拿，芬蘭必體驗！波羅的海冷水 plunge</li>
+        <li><i class="fa-solid fa-store"></i> <strong>市集廣場 Kauppatori</strong> <sup class="mk-badge mk-finland">7</sup> — 波羅的海鮮魚湯 Lohikeitto、馴鹿肉、當地手工藝</li>
+        <li><i class="fa-solid fa-ferry"></i> <strong>芬蘭堡 Suomenlinna</strong> <sup class="mk-badge mk-finland">8</sup> — UNESCO 世界遺產海上要塞 (市集廣場搭渡輪 15 分鐘)</li>
+        <li><i class="fa-solid fa-church"></i> <strong>岩石教堂 Temppeliaukio</strong> <sup class="mk-badge mk-finland">9</sup> — 整座教堂鑿入天然岩石中，絕佳音響效果</li>
+        <li><i class="fa-solid fa-hot-tub"></i> <strong>Löyly 桑拿</strong> <sup class="mk-badge mk-finland">10</sup> — 設計感海濱桑拿，芬蘭必體驗！波羅的海冷水 plunge</li>
+        <li><i class="fa-solid fa-mug-hot"></i> 芬蘭 Fika 時光 — 肉桂卷 Korvapuusti + 咖啡</li>
       </ul>
       <div class="day-transport"><i class="fa-solid fa-clock"></i> 步行 + 電車 (HSL Day Pass) · 來回芬蘭堡渡輪 15min</div>
     </div>
@@ -241,205 +219,181 @@ footer a:hover { text-decoration: underline; }
     <div class="day-card day-finland">
       <div class="day-header">
         <div><span class="day-num">Day 6</span><br><span class="day-date">9月2日 星期三</span></div>
-        <span class="day-country country-estonia">🇫🇮→🇪🇪</span>
+        <span class="day-country country-finland">🇫🇮 芬蘭</span>
       </div>
-      <div class="day-route">赫爾辛基半日 → 渡輪至塔林</div>
+      <div class="day-route">赫爾辛基悠閒探索 (Day 2)</div>
       <ul class="day-activities">
-        <li><i class="fa-solid fa-church"></i> <strong>岩石教堂 Temppeliaukio</strong> <sup class="mk-badge mk-finland">9</sup> — 整座教堂鑿入天然岩石中，絕佳音響效果</li>
+        <li><i class="fa-solid fa-book"></i> <strong>Oodi 中央圖書館</strong> <sup class="mk-badge mk-finland">11</sup> — 獲獎現代建築，不只是一座圖書館</li>
         <li><i class="fa-solid fa-paint-brush"></i> <strong>設計區 Design District</strong> — Marimekko、Iittala、Artek 芬蘭設計品牌旗艦店</li>
-        <li><i class="fa-solid fa-book"></i> <strong>Oodi 中央圖書館</strong> — 獲獎現代建築，不只是一座圖書館</li>
-        <li><i class="fa-solid fa-ship"></i> 16:30 <strong>Tallink Silja Megastar</strong> 赫爾辛基 → 塔林 (2小時)</li>
-        <li><i class="fa-solid fa-utensils"></i> 晚上：塔林老城 <strong>Rataskaevu 16</strong> 傳統愛沙尼亞晚餐</li>
+        <li><i class="fa-solid fa-shop"></i> <strong>Old Market Hall Vanha Kauppahalli</strong> — 百年室內市場，三文魚湯午餐</li>
+        <li><i class="fa-solid fa-monument"></i> Esplanadi 公園散步 · Uspenski 大教堂</li>
+        <li><i class="fa-solid fa-mug-hot"></i> 下午自由時間 · 咖啡小歇 · 補回未去的景點</li>
       </ul>
-      <div class="day-transport"><i class="fa-solid fa-clock"></i> 🚢 赫爾辛基 → 塔林 · 約 2 小時 · 可帶車上船 (~€41起)</div>
+      <div class="day-transport"><i class="fa-solid fa-clock"></i> 步行 + 電車 · 輕鬆漫遊赫爾辛基</div>
     </div>
 
     <!-- Day 7 -->
-    <div class="day-card day-estonia">
+    <div class="day-card day-transit">
       <div class="day-header">
         <div><span class="day-num">Day 7</span><br><span class="day-date">9月3日 星期四</span></div>
-        <span class="day-country country-estonia">🇪🇪 愛沙尼亞</span>
+        <span class="day-country country-transit">🇫🇮 + 🚢</span>
       </div>
-      <div class="day-route">塔林全日深度遊</div>
+      <div class="day-route">赫爾辛基半日 + 下午登過夜渡輪 → 斯德哥爾摩</div>
       <ul class="day-activities">
-        <li><i class="fa-solid fa-hill-rockslide"></i> <strong>座堂山 Toompea</strong> <sup class="mk-badge mk-estonia">14</sup> — 制高點俯瞰全城紅色屋頂與波羅的海</li>
-        <li><i class="fa-solid fa-church"></i> <strong>亞歷山大·涅夫斯基主教座堂</strong> <sup class="mk-badge mk-estonia">15</sup> — 標誌性東正教洋蔥圓頂</li>
-        <li><i class="fa-solid fa-tower-observation"></i> <strong>St. Olaf's Tower</strong> — 258級台階登頂，最佳全景 (曾是世界最高建築!)</li>
-        <li><i class="fa-solid fa-landmark"></i> <strong>市政廳廣場 Raekoja Plats</strong> — 中世紀市集氛圍，歐洲最古老的仍在運作的藥局</li>
-        <li><i class="fa-solid fa-palette"></i> <strong>Telliskivi 創意城</strong> — 前工業區改造，街頭藝術、獨立設計、精釀啤酒</li>
-        <li><i class="fa-solid fa-door-open"></i> Viru Gate 維魯門 — 老城入口，夕陽下最美</li>
+        <li><i class="fa-solid fa-camera"></i> 上午：最後的赫爾辛基漫步</li>
+        <li><i class="fa-solid fa-mug-hot"></i> 最後的芬蘭 Fika · 咖啡 + 肉桂卷</li>
+        <li><i class="fa-solid fa-ship"></i> 16:00 前往 <strong>Värtahamnen 渡輪碼頭</strong> <sup class="mk-badge mk-finland">12</sup> · 16:45 登船</li>
+        <li><i class="fa-solid fa-champagne-glasses"></i> <strong>Tallink Silja Line / Viking Line</strong> 過夜渡輪 — 艙房、自助晚餐、免稅店、波羅的海日落</li>
       </ul>
-      <div class="day-transport"><i class="fa-solid fa-clock"></i> 全程步行 · 塔林老城非常緊湊且行人友善</div>
+      <div class="day-transport"><i class="fa-solid fa-ferry"></i> 🚢 赫爾辛基 → 斯德哥爾摩 · 約 17 小時 · 傍晚上船，次日 10:00 抵達</div>
     </div>
 
     <!-- Day 8 -->
-    <div class="day-card day-latvia">
+    <div class="day-card day-sweden">
       <div class="day-header">
         <div><span class="day-num">Day 8</span><br><span class="day-date">9月4日 星期五</span></div>
-        <span class="day-country country-latvia">🚗 自駕</span>
+        <span class="day-country country-sweden">🇸🇪 瑞典</span>
       </div>
-      <div class="day-route">塔林 → 派爾努 → 里加 (🚗 自駕日)</div>
+      <div class="day-route">抵達斯德哥爾摩 · 全日老城探索 (Day 1)</div>
       <ul class="day-activities">
-        <li><i class="fa-solid fa-car"></i> <strong>取車出發</strong> — 塔林市區出發，沿 E67 公路南下</li>
-        <li><i class="fa-solid fa-umbrella-beach"></i> <strong>派爾努 Pärnu</strong> <sup class="mk-badge mk-estonia">16</sup> (停留1.5hr) — 愛沙尼亞「夏日之都」，寬闊白沙灘、海濱長廊、SPA小鎮</li>
-        <li><i class="fa-solid fa-mug-hot"></i> 派爾努老城咖啡小歇</li>
-        <li><i class="fa-solid fa-flag"></i> 跨越邊境進入拉脫維亞 (無邊檢)</li>
-        <li><i class="fa-solid fa-city"></i> 傍晚抵達里加，老城夜間漫步 + 道加瓦河畔日落</li>
+        <li><i class="fa-solid fa-anchor"></i> 10:00 渡輪抵達斯德哥爾摩</li>
+        <li><i class="fa-solid fa-person-walking"></i> <strong>Gamla Stan 老城</strong> <sup class="mk-badge mk-sweden">13</sup> — 歐洲保存最完好的中世紀古城，鵝卵石小巷、彩色建築</li>
+        <li><i class="fa-solid fa-landmark"></i> Stortorget 大廣場 — 諾貝爾博物館所在地，經典彩色立面拍照點</li>
+        <li><i class="fa-solid fa-crown"></i> <strong>瑞典皇宮 Kungliga Slottet</strong> <sup class="mk-badge mk-sweden">14</sup> — 歐洲最大宮殿之一，衛兵換崗儀式</li>
+        <li><i class="fa-solid fa-ship"></i> <strong>瓦薩博物館 Vasamuseet</strong> <sup class="mk-badge mk-sweden">15</sup> — 17世紀沉船完整打撈，世界唯一保存完好的古戰船</li>
+        <li><i class="fa-solid fa-archway"></i> Mårten Trotzigs Gränd — 全城最窄小巷 (僅 90cm 寬)</li>
+        <li><i class="fa-solid fa-mug-hot"></i> 瑞典 Fika 咖啡時光 — 肉桂卷 + 咖啡</li>
       </ul>
-      <div class="day-transport"><i class="fa-solid fa-clock"></i> 🚗 塔林→派爾努: 130km / 1h45m · 派爾努→里加: 195km / 2h30m · E67公路 · 注意測速攝像頭</div>
+      <div class="day-transport"><i class="fa-solid fa-clock"></i> 全程步行 · 老城 + Djurgården 島</div>
     </div>
 
     <!-- Day 9 -->
-    <div class="day-card day-latvia">
+    <div class="day-card day-sweden">
       <div class="day-header">
         <div><span class="day-num">Day 9</span><br><span class="day-date">9月5日 星期六</span></div>
-        <span class="day-country country-latvia">🇱🇻 拉脫維亞</span>
+        <span class="day-country country-sweden">🇸🇪 瑞典</span>
       </div>
-      <div class="day-route">里加全日深度遊 —「北方巴黎」</div>
+      <div class="day-route">斯德哥爾摩全日探索 (Day 2) → 傍晚飛赫爾辛基轉機返港</div>
       <ul class="day-activities">
-        <li><i class="fa-solid fa-church"></i> <strong>聖彼得教堂 St. Peter's Church</strong> <sup class="mk-badge mk-latvia">18</sup> — 登塔俯瞰里加老城全景</li>
-        <li><i class="fa-solid fa-landmark"></i> <strong>里加老城 Vecrīga</strong> <sup class="mk-badge mk-latvia">17</sup> — UNESCO 世界遺產，漢薩同盟時代建築群</li>
-        <li><i class="fa-solid fa-building"></i> <strong>新藝術建築區 Alberta iela</strong> <sup class="mk-badge mk-latvia">20</sup> — 全球密度最高的新藝術風格建築群，建築愛好者天堂</li>
-        <li><i class="fa-solid fa-shop"></i> <strong>中央市場 Centrāltirgus</strong> <sup class="mk-badge mk-latvia">19</sup> — 五座齊柏林飛艇機庫改造，歐洲最大市場，UNESCO 世界遺產</li>
-        <li><i class="fa-solid fa-monument"></i> <strong>自由紀念碑 Freedom Monument</strong> — 拉脫維亞獨立象徵</li>
-        <li><i class="fa-solid fa-utensils"></i> 晚餐推薦：<strong>Dom</strong> 傳統野味料理 (烤鷓鴣/慢燉兔肉) 或 <strong>Max Cekot Kitchen</strong> 精緻拉脫維亞菜</li>
+        <li><i class="fa-solid fa-building-columns"></i> <strong>市政廳 Stadshuset</strong> <sup class="mk-badge mk-sweden">16</sup> — 諾貝爾獎晚宴場地，登塔俯瞰全城</li>
+        <li><i class="fa-solid fa-tree"></i> <strong>Djurgården 動物園島</strong> — 斯德哥爾摩的綠肺，水濱散步</li>
+        <li><i class="fa-solid fa-landmark"></i> <strong>Skansen 露天博物館</strong> — 世界最古老的露天博物館，瑞典歷史建築群 + 北歐動物園</li>
+        <li><i class="fa-solid fa-camera"></i> Monteliusvägen 觀景台 — 俯瞰老城 + 市政廳全景</li>
+        <li><i class="fa-solid fa-shop"></i> <strong>Östermalmshallen 市場</strong> — 百年室內市場，瑞典海鮮與肉丸</li>
+        <li><i class="fa-solid fa-car"></i> 傍晚前往 <strong>ARN 機場</strong> <sup class="mk-badge mk-sweden">17</sup> (Arlanda Express 20min)</li>
+        <li><i class="fa-solid fa-plane"></i> <strong>AY818</strong> ARN 21:10 → HEL 22:20</li>
       </ul>
-      <div class="day-transport"><i class="fa-solid fa-clock"></i> 全程步行 · 里加老城緊湊，新藝術區步行可達</div>
+      <div class="day-transport"><i class="fa-solid fa-clock"></i> 步行 + 電車 · Arlanda Express 20min · ✈ AY818 1h10m · 赫爾辛基轉機 2h15m</div>
     </div>
 
     <!-- Day 10 -->
-    <div class="day-card day-latvia">
+    <div class="day-card day-flight">
       <div class="day-header">
         <div><span class="day-num">Day 10</span><br><span class="day-date">9月6日 星期日</span></div>
-        <span class="day-country country-latvia">🇱🇻 + ✈</span>
+        <span class="day-country country-transit">✈ 返港</span>
       </div>
-      <div class="day-route">Gauja 國家公園一日遊 → 傍晚返港</div>
+      <div class="day-route">赫爾辛基 → 香港 · AY99 直航返港</div>
       <ul class="day-activities">
-        <li><i class="fa-solid fa-car"></i> 自駕前往 <strong>Sigulda</strong> (里加出發 1小時，53km)</li>
-        <li><i class="fa-solid fa-castle"></i> <strong>Turaida 城堡</strong> <sup class="mk-badge mk-latvia">22</sup> — 紅磚中世紀城堡，Gauja 河谷全景 (門票 €8)</li>
-        <li><i class="fa-solid fa-cable-car"></i> <strong>Sigulda 纜車</strong> — 橫跨 Gauja 河谷 (~€5)，俯瞰「拉脫維亞小瑞士」</li>
-        <li><i class="fa-solid fa-dungeon"></i> <strong>Gutmanis 洞穴</strong> — 波羅的海最大砂岩洞穴，千年銘文</li>
-        <li><i class="fa-solid fa-castle"></i> <strong>Sigulda 城堡 (Livonian Order)</strong> <sup class="mk-badge mk-latvia">21</sup> — 十字軍時期要塞遺址</li>
-        <li><i class="fa-solid fa-car"></i> 駕車返里加 (1小時)</li>
-        <li><i class="fa-solid fa-plane-departure"></i> <strong>BT307</strong> 里加(RIX) 19:40 → 赫爾辛基(HEL) 20:40</li>
-        <li><i class="fa-solid fa-clock"></i> HEL 機場休息室候機 4hr → <strong>AY99</strong> HEL 00:35 → HKG 17:40 (+1)</li>
+        <li><i class="fa-solid fa-clock"></i> 00:35 赫爾辛基起飛 · 機上休息</li>
+        <li><i class="fa-solid fa-plane-arrival"></i> <strong>AY99</strong> 赫爾辛基(HEL) 00:35 → 香港(HKG) 17:40<br><small style="color:#64748b">Finnair Airbus A350-900 · 飛行時間 12h05m</small></li>
+        <li><i class="fa-solid fa-home"></i> 當天下午 17:40 抵達香港</li>
       </ul>
-      <div class="day-transport"><i class="fa-solid fa-clock"></i> 🚗 里加↔Sigulda 1h×2 · ✈ BT307 (1h) + AY99 (12h) · 9月7日(一) 17:40 抵港</div>
+      <div class="day-transport"><i class="fa-solid fa-clock"></i> ✈ AY99 12h05m · 同日抵達 · 9月6日 17:40 HKT</div>
     </div>
 
     <!-- Transport Overview -->
     <div class="section-title"><i class="fa-solid fa-route"></i> 交通總覽</div>
-
     <div class="transport-grid">
-      <!-- Outbound flight -->
       <div class="transport-card">
-        <h4><i class="fa-solid fa-plane" style="color:#8b5cf6;"></i> ✈ 去程航班</h4>
+        <h4><i class="fa-solid fa-plane" style="color:#8b5cf6;"></i> ✈ 去程航班 (8月28日)</h4>
         <div class="flight-row"><span>HKG → HEL</span><span class="flight-no">AY100</span><span class="flight-time">20:55→05:35 (+1) · 13h40m</span></div>
-        <div class="flight-row"><span>HEL → ARN</span><span class="flight-no">AY803</span><span class="flight-time">07:55→08:05 · 1h10m</span></div>
-        <div class="note">Finnair · Airbus A350 + A321 · 赫爾辛基中轉 ~2hr</div>
-        <div class="note" style="margin-top:4px;color:#f59e0b;">⚠ 無直飛斯德哥爾摩航班，需中轉一次</div>
+        <div class="note">Finnair · Airbus A350-900 · 每日一班直飛 · 8月29日早上抵達赫爾辛基</div>
       </div>
-
-      <!-- Return flight -->
       <div class="transport-card">
-        <h4><i class="fa-solid fa-plane-arrival" style="color:#8b5cf6;"></i> ✈ 回程航班</h4>
-        <div class="flight-row"><span>RIX → HEL</span><span class="flight-no">BT307</span><span class="flight-time">19:40→20:40 · 1h00m</span></div>
-        <div class="flight-row"><span>HEL → HKG</span><span class="flight-no">AY99</span><span class="flight-time">00:35→17:40 (+1) · 12h05m</span></div>
-        <div class="note">airBaltic A220 + Finnair A350 · 赫爾辛基中轉 ~4hr</div>
-        <div class="note" style="margin-top:4px;color:#f59e0b;">⚠ BT307 週日有航班，週一不運營 · 週一回程請改搭土耳其航空 TK1776+TK70</div>
+        <h4><i class="fa-solid fa-plane-arrival" style="color:#8b5cf6;"></i> ✈ 回程航班 (9月5-6日)</h4>
+        <div class="flight-row"><span>ARN → HEL</span><span class="flight-no">AY818</span><span class="flight-time">21:10→22:20 · 1h10m</span></div>
+        <div class="flight-row"><span>HEL → HKG</span><span class="flight-no">AY99</span><span class="flight-time">00:35→17:40 · 12h05m</span></div>
+        <div class="note">Finnair · A321 + A350 · 赫爾辛基中轉 ~2h15m · 9月6日 17:40 抵港 · AY99 每日營運</div>
       </div>
-
-      <!-- Ferries -->
       <div class="transport-card">
         <h4><i class="fa-solid fa-ferry" style="color:#f59e0b;"></i> 🚢 渡輪安排</h4>
-        <div class="flight-row"><span>斯德哥爾摩 → 赫爾辛基</span><span>Tallink Silja / Viking Line</span><span class="flight-time">~17h · 16:45→10:00</span></div>
-        <div class="flight-row"><span>赫爾辛基 → 塔林</span><span>Tallink Megastar</span><span class="flight-time">~2h · 16:30→18:30</span></div>
-        <div class="note">過夜渡輪含艙房 · 均可帶車上船 · 約€160-€640 (含車位+艙房)</div>
+        <div class="flight-row"><span>赫爾辛基 → 塔林</span><span>Tallink Megastar</span><span class="flight-time">~2h · 早班出發</span></div>
+        <div class="flight-row"><span>塔林 → 赫爾辛基</span><span>Tallink Megastar</span><span class="flight-time">~2h · 午後出發</span></div>
+        <div class="flight-row"><span>赫爾辛基 → 斯德哥爾摩</span><span>Tallink Silja / Viking Line</span><span class="flight-time">~17h · 16:45→10:00</span></div>
+        <div class="note">過夜渡輪含艙房 · Tallink Megastar 約 €41 起 · 過夜渡輪約 €160-€640 (含艙房)</div>
       </div>
-
-      <!-- Driving -->
       <div class="transport-card">
-        <h4><i class="fa-solid fa-car" style="color:#10b981;"></i> 🚗 自駕路段</h4>
-        <div class="flight-row"><span>塔林 → 派爾努</span><span>E67 公路</span><span class="flight-time">131km · ~1h45m</span></div>
-        <div class="flight-row"><span>派爾努 → 里加</span><span>E67 公路</span><span class="flight-time">195km · ~2h30m</span></div>
-        <div class="flight-row"><span>里加 ↔ Sigulda</span><span>A2 公路</span><span class="flight-time">53km · ~1h</span></div>
-        <div class="note">全程約 430km · 兩國均使用歐元 · 無邊境檢查 · 注意測速攝像頭</div>
+        <h4><i class="fa-solid fa-train-subway" style="color:#10b981;"></i> 🚇 市內交通</h4>
+        <div class="flight-row"><span>赫爾辛基機場 → 市中心</span><span>HSL 火車</span><span class="flight-time">~30min</span></div>
+        <div class="flight-row"><span>斯德哥爾摩 → ARN</span><span>Arlanda Express</span><span class="flight-time">~20min</span></div>
+        <div class="note">赫爾辛基 HSL Day Pass · 斯德哥爾摩步行 + 單程票 · 三城老城均步行可達</div>
       </div>
     </div>
 
-    <!-- Alt return option -->
-    <div class="section-title" style="margin-top: 24px;"><i class="fa-solid fa-circle-exclamation"></i> 備選回程方案 (適用於週一返程)</div>
+    <div class="section-title" style="margin-top: 24px;"><i class="fa-solid fa-circle-exclamation"></i> 備選回程方案</div>
     <div class="transport-card" style="max-width:100%;">
       <h4><i class="fa-solid fa-plane" style="color:#8b5cf6;"></i> 土耳其航空經伊斯坦布爾中轉</h4>
-      <div class="flight-row"><span>RIX → IST</span><span class="flight-no">TK1776</span><span class="flight-time">19:00→23:15 · 3h15m</span></div>
+      <div class="flight-row"><span>ARN → IST</span><span class="flight-no">TK1796</span><span class="flight-time">19:30→23:55 · 3h25m</span></div>
       <div class="flight-row"><span>IST → HKG</span><span class="flight-no">TK70</span><span class="flight-time">01:35→17:25 (+1) · 9h50m</span></div>
-      <div class="note">每日營運 · 中轉約 2h20m · IST機場免簽證轉機 · 總行程約 23 小時</div>
+      <div class="note">每日營運 · IST機場免簽證轉機 · 總行程約 22 小時</div>
     </div>
   </div>
 </div>
 
-<!-- Footer -->
 <footer>
   <p>旅行資訊來源：Rick Steves Travel Forum · lovetravellingblog.com · theblogtrotter.com · day-trips-from.com · Wikivoyage · Wikipedia</p>
-  <p>地圖：<a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> · 航班資料參考 Finnair / airBaltic / Turkish Airlines 官網</p>
+  <p>地圖：<a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> · 航班資料參考 Finnair / Tallink Silja / Turkish Airlines 官網</p>
   <p style="margin-top: 6px;">Made for personal travel planning · 2026</p>
 </footer>
 
-<!-- Leaflet JS -->
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
-/* ===== DATA ===== */
-// Image helper: local images in images/ folder
-function img(name) {
-  return 'images/' + name;
-}
+function img(name) { return 'images/' + name; }
 
-// All markers with image + info link
+// Markers 0-17: HK → Tallinn first, then Helsinki, then Stockholm
 var markers = [
-  // Transport hubs
   { id: 0, lat: 22.308, lng: 113.918, name: '香港國際機場 HKG', en: 'Hong Kong Intl Airport',
-    desc: '出發點 · Finnair AY100 每日一班直飛赫爾辛基',
+    desc: '出發點 · Finnair AY100 直飛赫爾辛基',
     img: '', link: '', cls: 'marker-hk', day: 1 },
 
-  { id: 1, lat: 59.652, lng: 17.931, name: '斯德哥爾摩阿蘭達機場 ARN', en: 'Stockholm Arlanda Airport',
-    desc: '經赫爾辛基中轉抵達 · Arlanda Express 快線 20 分鐘到市中心',
+  // Tallinn (first destination after arrival)
+  { id: 1, lat: 59.444, lng: 24.759, name: '塔林客運碼頭', en: 'Tallinn Passenger Port (Vanasadam)',
+    desc: '從赫爾辛基搭渡輪抵達 · 步行 15 分鐘到老城',
     img: '', link: '', cls: 'marker-transport', day: 2 },
 
-  // Stockholm
-  { id: 2, lat: 59.325, lng: 18.071, name: 'Gamla Stan 老城', en: 'Gamla Stan (Old Town)',
-    desc: '歐洲保存最完好的中世紀古城之一，鵝卵石小巷、彩色建築、最窄小巷僅 90cm',
-    img: img('gamla_stan.jpg'),
-    link: 'https://en.wikivoyage.org/wiki/Stockholm/Gamla_stan',
-    cls: 'marker-sweden', day: 2 },
+  { id: 2, lat: 59.437, lng: 24.745, name: '塔林老城', en: 'Tallinn Old Town (Vanalinn)',
+    desc: 'UNESCO 世界遺產 · 歐洲保存最完好的中世紀古城之一 · 童話般的色彩',
+    img: img('tallinn_old_town.jpg'),
+    link: 'https://en.wikivoyage.org/wiki/Tallinn/Old_Town',
+    cls: 'marker-estonia', day: 2 },
 
-  { id: 3, lat: 59.327, lng: 18.072, name: '瑞典皇宮', en: 'Kungliga Slottet (Royal Palace)',
-    desc: '歐洲最大宮殿之一，巴洛克風格。每日衛兵換崗儀式 (週日 13:15)',
-    img: img('royal_palace.jpg'),
-    link: 'https://en.wikipedia.org/wiki/Stockholm_Palace',
-    cls: 'marker-sweden', day: 3 },
+  { id: 3, lat: 59.437, lng: 24.738, name: '座堂山 Toompea', en: 'Toompea Hill & Castle',
+    desc: '制高點俯瞰全城紅色屋頂與波羅的海 · 愛沙尼亞國會所在地',
+    img: img('toompea.jpg'),
+    link: 'https://en.wikipedia.org/wiki/Toompea',
+    cls: 'marker-estonia', day: 3 },
 
-  { id: 4, lat: 59.328, lng: 18.091, name: '瓦薩博物館', en: 'Vasamuseet (Vasa Museum)',
-    desc: '世界唯一保存完好的17世紀古戰船，瑞典最受歡迎的博物館',
-    img: img('vasa_museum.jpg'),
-    link: 'https://en.wikipedia.org/wiki/Vasa_Museum',
-    cls: 'marker-sweden', day: 3 },
+  { id: 4, lat: 59.436, lng: 24.741, name: '涅夫斯基主教座堂', en: 'Alexander Nevsky Cathedral',
+    desc: '東正教標誌性洋蔥圓頂 · 愛沙尼亞最大的東正教堂',
+    img: img('nevsky_cathedral.jpg'),
+    link: 'https://en.wikipedia.org/wiki/Alexander_Nevsky_Cathedral,_Tallinn',
+    cls: 'marker-estonia', day: 3 },
 
-  { id: 5, lat: 59.327, lng: 18.055, name: '斯德哥爾摩市政廳', en: 'Stockholm City Hall (Stadshuset)',
-    desc: '諾貝爾獎年度晚宴場地，可登塔俯瞰全城',
-    img: img('city_hall.jpg'),
-    link: 'https://en.wikipedia.org/wiki/Stockholm_City_Hall',
-    cls: 'marker-sweden', day: 3 },
+  // Helsinki (after returning from Tallinn)
+  { id: 5, lat: 60.154, lng: 24.921, name: '赫爾辛基西港碼頭', en: 'Helsinki West Harbour (Länsisatama)',
+    desc: 'Tallink Silja 渡輪來回塔林 · 距市中心約 3km',
+    img: '', link: '', cls: 'marker-transport', day: 4 },
 
-  { id: 6, lat: 59.344, lng: 18.109, name: 'Värtahamnen 渡輪碼頭', en: 'Värtahamnen Ferry Terminal',
-    desc: 'Tallink Silja Line 出發港 · 過夜渡輪前往赫爾辛基 (16:45 啟航)',
-    img: '', link: 'https://en.wikipedia.org/wiki/Ports_of_the_Baltic_Sea',
-    cls: 'marker-transport', day: 4 },
-
-  // Helsinki
-  { id: 7, lat: 60.170, lng: 24.952, name: '赫爾辛基大教堂', en: 'Helsinki Cathedral & Senate Square',
+  { id: 6, lat: 60.170, lng: 24.952, name: '赫爾辛基大教堂', en: 'Helsinki Cathedral & Senate Square',
     desc: '白色新古典主義地標，芬蘭最著名的建築，參議院廣場全景',
     img: img('helsinki_cathedral.jpg'),
     link: 'https://en.wikipedia.org/wiki/Helsinki_Cathedral',
+    cls: 'marker-finland', day: 4 },
+
+  { id: 7, lat: 60.167, lng: 24.953, name: '市集廣場 Kauppatori', en: 'Market Square (Kauppatori)',
+    desc: '波羅的海鮮魚湯、馴鹿肉、當地手工藝品 · 渡輪碼頭出發點',
+    img: img('market_square.jpg'),
+    link: 'https://en.wikipedia.org/wiki/Market_Square,_Helsinki',
     cls: 'marker-finland', day: 5 },
 
   { id: 8, lat: 60.148, lng: 24.988, name: '芬蘭堡 Suomenlinna', en: 'Suomenlinna Sea Fortress',
@@ -452,113 +406,65 @@ var markers = [
     desc: '整座教堂鑿入天然岩石中，絕佳音響效果，建築奇蹟',
     img: img('rock_church.jpg'),
     link: 'https://en.wikipedia.org/wiki/Temppeliaukio_Church',
-    cls: 'marker-finland', day: 6 },
-
-  { id: 10, lat: 60.167, lng: 24.953, name: '市集廣場 Kauppatori', en: 'Market Square (Kauppatori)',
-    desc: '波羅的海鮮魚湯、馴鹿肉、當地手工藝品 · 渡輪碼頭出發點',
-    img: img('market_square.jpg'),
-    link: 'https://en.wikipedia.org/wiki/Market_Square,_Helsinki',
     cls: 'marker-finland', day: 5 },
 
-  { id: 11, lat: 60.152, lng: 24.924, name: 'Löyly 桑拿', en: 'Löyly Sauna & Restaurant',
-    desc: '設計感海濱桑拿 · 芬蘭必體驗！波羅的海冷水 plunge · 3百萬個桑拿的國度',
+  { id: 10, lat: 60.152, lng: 24.924, name: 'Löyly 桑拿', en: 'Löyly Sauna & Restaurant',
+    desc: '設計感海濱桑拿 · 芬蘭必體驗！波羅的海冷水 plunge',
     img: '', link: 'https://www.loylyhelsinki.fi/en/',
     cls: 'marker-finland', day: 5 },
 
-  { id: 12, lat: 60.154, lng: 24.921, name: '赫爾辛基西港碼頭', en: 'Helsinki West Harbour (Länsisatama)',
-    desc: 'Tallink Silja 渡輪往塔林 · 每日10+班次 · 航程約2小時',
-    img: '', link: '', cls: 'marker-transport', day: 6 },
+  { id: 11, lat: 60.174, lng: 24.938, name: 'Oodi 中央圖書館', en: 'Oodi Helsinki Central Library',
+    desc: '獲獎現代建築 · 市民共享空間 · 不只是圖書館',
+    img: '', link: 'https://en.wikipedia.org/wiki/Helsinki_Central_Library_Oodi',
+    cls: 'marker-finland', day: 6 },
 
-  // Tallinn
-  { id: 13, lat: 59.437, lng: 24.745, name: '塔林老城', en: 'Tallinn Old Town (Vanalinn)',
-    desc: 'UNESCO 世界遺產 · 歐洲保存最完好的中世紀古城之一 · 童話般的色彩',
-    img: img('tallinn_old_town.jpg'),
-    link: 'https://en.wikivoyage.org/wiki/Tallinn/Old_Town',
-    cls: 'marker-estonia', day: 7 },
+  { id: 12, lat: 59.344, lng: 18.109, name: 'Värtahamnen 渡輪碼頭', en: 'Värtahamnen Ferry Terminal',
+    desc: 'Tallink Silja Line 出發港 · 過夜渡輪前往斯德哥爾摩 (16:45 啟航)',
+    img: '', link: 'https://en.wikipedia.org/wiki/Ports_of_the_Baltic_Sea',
+    cls: 'marker-transport', day: 7 },
 
-  { id: 14, lat: 59.437, lng: 24.738, name: '座堂山 Toompea', en: 'Toompea Hill & Castle',
-    desc: '制高點俯瞰全城紅色屋頂與波羅的海 · 愛沙尼亞國會所在地',
-    img: img('toompea.jpg'),
-    link: 'https://en.wikipedia.org/wiki/Toompea',
-    cls: 'marker-estonia', day: 7 },
+  // Stockholm
+  { id: 13, lat: 59.325, lng: 18.071, name: 'Gamla Stan 老城', en: 'Gamla Stan (Old Town)',
+    desc: '歐洲保存最完好的中世紀古城之一，鵝卵石小巷、彩色建築',
+    img: img('gamla_stan.jpg'),
+    link: 'https://en.wikivoyage.org/wiki/Stockholm/Gamla_stan',
+    cls: 'marker-sweden', day: 8 },
 
-  { id: 15, lat: 59.436, lng: 24.741, name: '涅夫斯基主教座堂', en: 'Alexander Nevsky Cathedral',
-    desc: '東正教標誌性洋蔥圓頂 · 愛沙尼亞最大的東正教堂',
-    img: img('nevsky_cathedral.jpg'),
-    link: 'https://en.wikipedia.org/wiki/Alexander_Nevsky_Cathedral,_Tallinn',
-    cls: 'marker-estonia', day: 7 },
+  { id: 14, lat: 59.327, lng: 18.072, name: '瑞典皇宮', en: 'Kungliga Slottet (Royal Palace)',
+    desc: '歐洲最大宮殿之一，巴洛克風格。每日衛兵換崗儀式',
+    img: img('royal_palace.jpg'),
+    link: 'https://en.wikipedia.org/wiki/Stockholm_Palace',
+    cls: 'marker-sweden', day: 8 },
 
-  // Pärnu
-  { id: 16, lat: 58.386, lng: 24.497, name: '派爾努 Pärnu', en: 'Pärnu Beach & Old Town',
-    desc: '愛沙尼亞「夏日之都」· 寬闊白沙灘 · 海濱長廊 · SPA小鎮 · 自駕中途休息站',
-    img: img('parnu.jpg'),
-    link: 'https://en.wikipedia.org/wiki/P%C3%A4rnu',
-    cls: 'marker-estonia', day: 8 },
+  { id: 15, lat: 59.328, lng: 18.091, name: '瓦薩博物館', en: 'Vasamuseet (Vasa Museum)',
+    desc: '世界唯一保存完好的17世紀古戰船，瑞典最受歡迎的博物館',
+    img: img('vasa_museum.jpg'),
+    link: 'https://en.wikipedia.org/wiki/Vasa_Museum',
+    cls: 'marker-sweden', day: 8 },
 
-  // Riga
-  { id: 17, lat: 56.949, lng: 24.106, name: '里加老城 Vecrīga', en: 'Riga Old Town (Vecrīga)',
-    desc: 'UNESCO 世界遺產 · 漢薩同盟時代建築 · 「北方巴黎」',
-    img: img('riga_old_town.jpg'),
-    link: 'https://en.wikivoyage.org/wiki/Riga/Vecr%C4%ABga',
-    cls: 'marker-latvia', day: 9 },
+  { id: 16, lat: 59.327, lng: 18.055, name: '斯德哥爾摩市政廳', en: 'Stockholm City Hall (Stadshuset)',
+    desc: '諾貝爾獎年度晚宴場地，可登塔俯瞰全城',
+    img: img('city_hall.jpg'),
+    link: 'https://en.wikipedia.org/wiki/Stockholm_City_Hall',
+    cls: 'marker-sweden', day: 9 },
 
-  { id: 18, lat: 56.948, lng: 24.108, name: '聖彼得教堂', en: 'St. Peter\'s Church, Riga',
-    desc: '登塔俯瞰里加老城全景 · 哥德式建築地標',
-    img: img('st_peters.jpg'),
-    link: 'https://en.wikipedia.org/wiki/St._Peter%27s_Church,_Riga',
-    cls: 'marker-latvia', day: 9 },
-
-  { id: 19, lat: 56.944, lng: 24.116, name: '里加中央市場', en: 'Riga Central Market (Centrāltirgus)',
-    desc: '五座齊柏林飛艇機庫改造 · 歐洲最大市場 · UNESCO 世界遺產 · 在地美食天堂',
-    img: img('central_market.jpg'),
-    link: 'https://en.wikipedia.org/wiki/Riga_Central_Market',
-    cls: 'marker-latvia', day: 9 },
-
-  { id: 20, lat: 56.957, lng: 24.110, name: '新藝術建築區', en: 'Art Nouveau District (Alberta iela)',
-    desc: '全球密度最高的新藝術風格建築群 · 建築愛好者天堂 · Alberta 街必看',
-    img: img('alberta_iela.jpg'),
-    link: 'https://en.wikipedia.org/wiki/Alberta_Street,_Riga',
-    cls: 'marker-latvia', day: 9 },
-
-  // Sigulda
-  { id: 21, lat: 57.164, lng: 24.849, name: 'Sigulda 城堡', en: 'Sigulda Castle (Livonian Order)',
-    desc: '十字軍時期要塞遺址 · 「拉脫維亞小瑞士」· Gauja 河谷全景',
-    img: img('sigulda_castle.jpg'),
-    link: 'https://en.wikipedia.org/wiki/Sigulda_Castle',
-    cls: 'marker-latvia', day: 10 },
-
-  { id: 22, lat: 57.179, lng: 24.849, name: 'Turaida 城堡', en: 'Turaida Castle & Museum Reserve',
-    desc: '紅磚中世紀城堡 · 塔樓俯瞰 Gauja 河谷 · 雕塑步道 · 門票 €8',
-    img: img('turaida_castle.jpg'),
-    link: 'https://en.wikipedia.org/wiki/Turaida_Castle',
-    cls: 'marker-latvia', day: 10 },
-
-  { id: 23, lat: 56.924, lng: 23.971, name: '里加機場 RIX', en: 'Riga International Airport',
-    desc: '返程出發 · airBaltic BT307 → 赫爾辛基 · 航程 1 小時',
-    img: '', link: '', cls: 'marker-transport', day: 10 }
+  { id: 17, lat: 59.652, lng: 17.931, name: '斯德哥爾摩阿蘭達機場 ARN', en: 'Stockholm Arlanda Airport',
+    desc: '返程出發 · AY818 → 赫爾辛基 · Arlanda Express 快線 20 分鐘到機場',
+    img: '', link: '', cls: 'marker-transport', day: 9 }
 ];
 
-/* ===== MAP ===== */
-var map = L.map('map', { zoomSnap: 0.25 }).setView([57.5, 20.0], 5.5);
-
-// Use CartoDB Positron for clean light basemap
+var map = L.map('map', { zoomSnap: 0.25 }).setView([58.5, 20.0], 5.5);
 L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
   attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> &copy; <a href="https://carto.com/">CARTO</a>',
-  subdomains: 'abcd',
-  maxZoom: 19
+  subdomains: 'abcd', maxZoom: 19
 }).addTo(map);
 
-// Create numbered markers
 var markerLayers = [];
 markers.forEach(function(m) {
   var icon = L.divIcon({
     className: 'custom-marker ' + m.cls,
-    html: String(m.id),
-    iconSize: [30, 30],
-    iconAnchor: [15, 15],
-    popupAnchor: [0, -18]
+    html: String(m.id), iconSize: [30, 30], iconAnchor: [15, 15], popupAnchor: [0, -18]
   });
-
   var imgHtml = '';
   if (m.img) {
     imgHtml = '<img src="' + m.img + '" alt="' + m.name + '" onerror="this.style.display=\'none\';this.nextElementSibling.style.display=\'flex\';" loading="lazy">' +
@@ -567,73 +473,40 @@ markers.forEach(function(m) {
     imgHtml = '<div class="popup-img-fallback"><i class="fa-solid fa-' +
               (m.cls === 'marker-transport' ? 'plane' : 'landmark') + '"></i></div>';
   }
-
-  var linkHtml = '';
-  if (m.link) {
-    linkHtml = '<a class="popup-link" href="' + m.link + '" target="_blank" rel="noopener">🔗 詳細介紹 →</a>';
-  }
-
-  var popupContent =
-    imgHtml +
+  var linkHtml = m.link ? '<a class="popup-link" href="' + m.link + '" target="_blank" rel="noopener">🔗 詳細介紹 →</a>' : '';
+  var popupContent = imgHtml +
     '<div class="popup-title">' + m.name + '</div>' +
     '<div class="popup-subtitle">' + m.en + '</div>' +
-    '<p style="margin:6px 0;font-size:0.85rem;">' + m.desc + '</p>' +
-    linkHtml;
-
-  var marker = L.marker([m.lat, m.lng], { icon: icon })
-    .bindPopup(popupContent, { maxWidth: 300 })
-    .addTo(map);
-
-  marker._dayNum = m.day;
-  marker._id = m.id;
+    '<p style="margin:6px 0;font-size:0.85rem;">' + m.desc + '</p>' + linkHtml;
+  var marker = L.marker([m.lat, m.lng], { icon: icon }).bindPopup(popupContent, { maxWidth: 300 }).addTo(map);
+  marker._dayNum = m.day; marker._id = m.id;
   markerLayers.push(marker);
 });
 
-/* ===== ROUTE LINES ===== */
-
-// Flight: HKG → HEL → ARN (blue dashed)
+// Route lines
 var flightLine1 = L.polyline(
-  [[22.308, 113.918], [60.317, 24.963], [59.652, 17.931]],
+  [[22.308, 113.918], [60.317, 24.963]],
   { color: '#8b5cf6', weight: 3, dashArray: '10, 8', opacity: 0.7 }
 ).addTo(map);
 
-// Ferry: ARN → Helsinki (orange dashed)
 var ferryLine1 = L.polyline(
-  [[59.344, 18.109], [60.154, 24.921]],
-  { color: '#f59e0b', weight: 3, dashArray: '8, 6', opacity: 0.7 }
-).addTo(map);
-
-// Ferry: Helsinki → Tallinn (orange dashed)
-var ferryLine2 = L.polyline(
   [[60.154, 24.921], [59.444, 24.759]],
   { color: '#f59e0b', weight: 3, dashArray: '8, 6', opacity: 0.7 }
 ).addTo(map);
 
-// Drive: Tallinn → Pärnu → Riga (green solid)
-var driveLine1 = L.polyline(
-  [[59.437, 24.745], [58.386, 24.497], [56.949, 24.106]],
-  { color: '#10b981', weight: 4, opacity: 0.8 }
+var ferryLine2 = L.polyline(
+  [[60.154, 24.921], [59.344, 18.109]],
+  { color: '#f59e0b', weight: 3, dashArray: '8, 6', opacity: 0.7 }
 ).addTo(map);
 
-// Drive: Riga → Sigulda → RIX (green solid)
-var driveLine2 = L.polyline(
-  [[56.949, 24.106], [57.164, 24.849], [57.179, 24.849], [56.924, 23.971]],
-  { color: '#10b981', weight: 4, opacity: 0.8 }
-).addTo(map);
-
-// Flight return: RIX → HEL → HKG (blue dashed)
 var flightLine2 = L.polyline(
-  [[56.924, 23.971], [60.317, 24.963], [22.308, 113.918]],
+  [[59.652, 17.931], [60.317, 24.963], [22.308, 113.918]],
   { color: '#8b5cf6', weight: 3, dashArray: '10, 8', opacity: 0.7 }
 ).addTo(map);
 
-// Fit bounds to show all markers
 var allCoords = markers.map(function(m) { return [m.lat, m.lng]; });
 map.fitBounds(allCoords, { padding: [40, 40] });
 
-/* ===== INTERACTIONS ===== */
-
-// Focus map on a specific day's markers
 function focusDay(dayNum) {
   var dayMarkers = markerLayers.filter(function(m) { return m._dayNum === dayNum; });
   if (dayMarkers.length === 0) return;
@@ -641,12 +514,9 @@ function focusDay(dayNum) {
   var bounds = L.latLngBounds(coords);
   map.fitBounds(bounds, { padding: [60, 60], maxZoom: 14 });
   dayMarkers.forEach(function(m) { m.setZIndexOffset(1000); });
-  setTimeout(function() {
-    dayMarkers.forEach(function(m) { m.setZIndexOffset(0); });
-  }, 2500);
+  setTimeout(function() { dayMarkers.forEach(function(m) { m.setZIndexOffset(0); }); }, 2500);
 }
 
-// Pan to a specific marker and open its popup
 function focusMarker(markerId) {
   var marker = null;
   for (var i = 0; i < markerLayers.length; i++) {
@@ -657,7 +527,6 @@ function focusMarker(markerId) {
   setTimeout(function() { marker.openPopup(); }, 500);
 }
 
-// Click day card → focus that day's area
 document.querySelectorAll('.day-card').forEach(function(card) {
   card.addEventListener('click', function(e) {
     if (e.target.closest('a')) return;
@@ -671,54 +540,42 @@ document.querySelectorAll('.day-card').forEach(function(card) {
   });
 });
 
-// Place name → marker ID mapping
 var nameToMarker = {
-  'Gamla Stan 老城': 2,
-  '瑞典皇宮 Kungliga Slottet': 3,
-  '瓦薩博物館 Vasamuseet': 4,
-  '市政廳 Stadshuset': 5,
-  '赫爾辛基大教堂 + 參議院廣場': 7,
-  '赫爾辛基大教堂': 7,
+  '塔林客運碼頭': 1,
+  '塔林老城': 2,
+  '座堂山 Toompea': 3,
+  '亞歷山大·涅夫斯基主教座堂': 4,
+  '赫爾辛基西港': 5,
+  '赫爾辛基大教堂': 6,
+  '市集廣場 Kauppatori': 7,
   '芬蘭堡 Suomenlinna': 8,
   '岩石教堂 Temppeliaukio': 9,
-  '市集廣場 Kauppatori': 10,
-  'Löyly 桑拿': 11,
-  '塔林老城 Tallinn Old Town': 13,
-  '座堂山 Toompea': 14,
-  '亞歷山大·涅夫斯基主教座堂': 15,
-  '派爾努 Pärnu': 16,
-  '里加老城 Vecrīga': 17,
-  '聖彼得教堂': 18,
-  '里加中央市場 Centrāltirgus': 19,
-  '新藝術建築區 Alberta iela': 20,
-  'Sigulda 城堡 (Livonian Order)': 21,
-  'Turaida 城堡': 22
+  'Löyly 桑拿': 10,
+  'Oodi 中央圖書館': 11,
+  'Värtahamnen 渡輪碼頭': 12,
+  'Gamla Stan 老城': 13,
+  '瑞典皇宮 Kungliga Slottet': 14,
+  '瑞典皇宮': 14,
+  '瓦薩博物館 Vasamuseet': 15,
+  '瓦薩博物館': 15,
+  '市政廳 Stadshuset': 16,
+  'ARN 機場': 17
 };
 
-// Click place name → focus marker + open popup
 document.querySelector('.itinerary-panel').addEventListener('click', function(e) {
   var strong = e.target.closest('strong');
   if (!strong) return;
   if (e.target.closest('a')) return;
   var text = strong.textContent.trim();
-
   var markerId = nameToMarker[text];
   if (markerId === undefined) {
     for (var key in nameToMarker) {
-      if (text.includes(key) || key.includes(text)) {
-        markerId = nameToMarker[key];
-        break;
-      }
+      if (text.includes(key) || key.includes(text)) { markerId = nameToMarker[key]; break; }
     }
   }
-
-  if (markerId !== undefined) {
-    e.stopPropagation();
-    focusMarker(markerId);
-  }
+  if (markerId !== undefined) { e.stopPropagation(); focusMarker(markerId); }
 });
 
-// Add visual cue to clickable place names
 document.querySelectorAll('.day-activities strong').forEach(function(el) {
   var text = el.textContent.trim();
   var found = nameToMarker[text] !== undefined;
@@ -727,13 +584,9 @@ document.querySelectorAll('.day-activities strong').forEach(function(el) {
       if (text.includes(key) || key.includes(text)) { found = true; break; }
     }
   }
-  if (found) {
-    el.classList.add('clickable-place');
-    el.title = '點擊在地圖上查看';
-  }
+  if (found) { el.classList.add('clickable-place'); el.title = '點擊在地圖上查看'; }
 });
 
-// Day card hover → dim non-relevant markers
 document.querySelectorAll('.day-card').forEach(function(card) {
   card.addEventListener('mouseenter', function() {
     var dayMatch = card.querySelector('.day-num');
