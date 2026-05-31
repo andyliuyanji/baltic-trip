@@ -3,42 +3,133 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>波羅的海四國10日自駕旅行計劃 — 香港出發 2026</title>
+<title>波羅的海四國10日自駕旅行計劃 — 手機版</title>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: -apple-system, BlinkMacSystemFont, "PingFang TC", "Noto Sans TC", "Microsoft YaHei", sans-serif; background: #f0f4f8; color: #1a202c; line-height: 1.6; }
+html, body { height: 100%; overflow: hidden; }
+body { font-family: -apple-system, BlinkMacSystemFont, "PingFang TC", "Noto Sans TC", "Microsoft YaHei", sans-serif; color: #1a202c; line-height: 1.6; background: #e8ecf1; }
 
-/* Header */
-.hero { background: linear-gradient(135deg, #1e3a5f 0%, #2d6a9f 40%, #4a9db5 70%, #8fc9b9 100%); color: #fff; padding: 48px 24px 40px; text-align: center; }
-.hero h1 { font-size: 2.2rem; font-weight: 800; margin-bottom: 8px; letter-spacing: -0.5px; }
-.hero .subtitle { font-size: 1.05rem; opacity: 0.9; margin-bottom: 16px; }
-.hero .flags { font-size: 2rem; margin-bottom: 12px; letter-spacing: 8px; }
-.hero .date-badge { display: inline-block; background: rgba(255,255,255,0.18); border: 1px solid rgba(255,255,255,0.3); border-radius: 24px; padding: 6px 20px; font-size: 0.95rem; }
+/* ---- Mobile-first layout: full-height flex column ---- */
+.main-layout { display: flex; flex-direction: column; height: 100vh; width: 100%; max-width: 100%; margin: 0; padding: 0; }
 
-/* Quick stats */
-.quick-stats { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; padding: 20px 24px; max-width: 900px; margin: -20px auto 0; position: relative; z-index: 2; }
-.quick-stats .stat { background: #fff; border-radius: 12px; padding: 14px 20px; box-shadow: 0 2px 12px rgba(0,0,0,0.08); font-size: 0.9rem; text-align: center; min-width: 100px; }
-.stat strong { display: block; font-size: 1.3rem; color: #1e3a5f; }
+/* ---- Compact hero ---- */
+.hero { background: linear-gradient(135deg, #1e3a5f 0%, #2d6a9f 40%, #4a9db5 70%, #8fc9b9 100%); color: #fff; padding: 10px 14px 12px; text-align: center; flex-shrink: 0; }
+.hero h1 { font-size: 1.1rem; font-weight: 800; margin-bottom: 2px; letter-spacing: -0.3px; }
+.hero .subtitle { font-size: 0.75rem; opacity: 0.9; margin-bottom: 6px; }
+.hero .flags { font-size: 1.1rem; margin-bottom: 4px; letter-spacing: 4px; }
+.hero .date-badge { display: inline-block; background: rgba(255,255,255,0.18); border: 1px solid rgba(255,255,255,0.3); border-radius: 20px; padding: 3px 12px; font-size: 0.7rem; }
 
-/* Layout */
-.main-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 0; max-width: 1400px; margin: 24px auto 0; padding: 0 16px; }
-@media (max-width: 900px) { .main-layout { grid-template-columns: 1fr; } }
+/* Hide quick stats on mobile (use the space for map) */
+.quick-stats { display: none; }
 
-/* Map */
-.map-panel { position: sticky; top: 16px; height: calc(100vh - 48px); }
-@media (max-width: 900px) { .map-panel { position: relative; top: auto; height: 50vh; } }
-.map-panel .panel-label { background: #fff; padding: 8px 16px; border-radius: 10px 10px 0 0; font-weight: 700; font-size: 0.9rem; color: #1e3a5f; border: 1px solid #e2e8f0; border-bottom: none; display: flex; align-items: center; gap: 8px; }
-#map { height: calc(100% - 41px); border-radius: 0 0 10px 10px; border: 1px solid #e2e8f0; z-index: 1; }
+/* ---- Map panel: ~43% of viewport ---- */
+.map-panel { position: relative; height: 43vh; flex-shrink: 0; }
+.map-panel .panel-label { background: #fff; padding: 5px 10px; font-weight: 700; font-size: 0.75rem; color: #1e3a5f; border-bottom: 1px solid #e2e8f0; display: flex; align-items: center; gap: 6px; }
+#map { height: calc(100% - 30px); border: none; z-index: 1; }
 
-/* Legend */
-.map-legend { position: absolute; bottom: 20px; right: 20px; z-index: 1000; background: #fff; padding: 10px 14px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.15); font-size: 0.8rem; line-height: 2; }
-.legend-dot { display: inline-block; width: 12px; height: 12px; border-radius: 50%; margin-right: 6px; vertical-align: middle; }
-.legend-line { display: inline-block; width: 24px; height: 3px; margin-right: 6px; vertical-align: middle; border-radius: 2px; }
+/* Legend — compact for mobile */
+.map-legend { position: absolute; bottom: 6px; right: 6px; z-index: 1000; background: rgba(255,255,255,0.92); padding: 4px 8px; border-radius: 6px; box-shadow: 0 1px 6px rgba(0,0,0,0.12); font-size: 0.65rem; line-height: 1.7; }
+.legend-dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 4px; vertical-align: middle; }
+.legend-line { display: inline-block; width: 18px; height: 2px; margin-right: 4px; vertical-align: middle; border-radius: 1px; }
+
+/* ---- Bottom sheet (itinerary) ---- */
+.bottom-sheet { flex: 1; display: flex; flex-direction: column; background: #f0f4f8; border-radius: 18px 18px 0 0; margin-top: -14px; box-shadow: 0 -4px 20px rgba(0,0,0,0.12); position: relative; z-index: 10; min-height: 0; }
+
+/* Drag handle */
+.sheet-handle { display: flex; justify-content: center; padding: 8px 0 2px; flex-shrink: 0; }
+.sheet-handle span { display: block; width: 36px; height: 4px; background: #cbd5e1; border-radius: 2px; }
+
+/* Scrollable itinerary area */
+.itinerary-panel { flex: 1; overflow-y: auto; padding: 6px 14px 24px; -webkit-overflow-scrolling: touch; }
+.section-title { font-size: 1rem; font-weight: 700; color: #1e3a5f; margin: 16px 0 10px; display: flex; align-items: center; gap: 6px; }
+.section-title i { color: #2d6a9f; }
+
+/* ---- Day cards — compact ---- */
+.day-card { background: #fff; border-radius: 10px; padding: 12px 14px; margin-bottom: 10px; box-shadow: 0 1px 4px rgba(0,0,0,0.05); border-left: 4px solid #ccc; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+.day-card:active { background: #f8fafc; }
+.day-card .clickable-place { cursor: pointer; border-bottom: 1px dashed #94a3b8; transition: color 0.15s, border-color 0.15s; }
+.day-card .clickable-place:active { color: #2d6a9f; border-bottom-color: #2d6a9f; }
+.day-card.day-sweden { border-left-color: #006aa7; }
+.day-card.day-finland { border-left-color: #003580; }
+.day-card.day-estonia { border-left-color: #0072ce; }
+.day-card.day-latvia { border-left-color: #9e3039; }
+.day-card.day-transit { border-left-color: #f59e0b; }
+.day-card.day-flight { border-left-color: #8b5cf6; }
+.day-header { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 6px; margin-bottom: 8px; }
+.day-num { font-size: 0.68rem; font-weight: 700; color: #64748b; text-transform: uppercase; letter-spacing: 0.5px; }
+.day-date { font-size: 0.88rem; font-weight: 800; color: #1e3a5f; }
+.day-country { display: inline-block; padding: 2px 8px; border-radius: 12px; font-size: 0.65rem; font-weight: 700; color: #fff; }
+.country-sweden { background: #006aa7; }
+.country-finland { background: #003580; }
+.country-estonia { background: #0072ce; }
+.country-latvia { background: #9e3039; }
+.country-transit { background: #64748b; }
+.day-route { font-size: 0.78rem; color: #475569; margin-bottom: 6px; }
+.day-activities { list-style: none; padding: 0; }
+.day-activities li { padding: 3px 0; font-size: 0.8rem; display: flex; align-items: flex-start; gap: 6px; }
+.day-activities li i { color: #2d6a9f; width: 16px; text-align: center; margin-top: 2px; flex-shrink: 0; font-size: 0.78rem; }
+.day-transport { margin-top: 8px; padding: 6px 10px; background: #f1f5f9; border-radius: 6px; font-size: 0.78rem; display: flex; align-items: center; gap: 6px; color: #475569; }
+.day-transport i { color: #f59e0b; font-size: 0.78rem; }
+
+/* ---- Transport cards — compact ---- */
+.transport-grid { display: flex; flex-direction: column; gap: 8px; }
+.transport-card { background: #fff; border-radius: 10px; padding: 12px 14px; box-shadow: 0 1px 4px rgba(0,0,0,0.05); }
+.transport-card h4 { font-size: 0.88rem; font-weight: 700; color: #1e3a5f; margin-bottom: 8px; display: flex; align-items: center; gap: 6px; }
+.transport-card .flight-row { display: flex; justify-content: space-between; padding: 4px 0; border-bottom: 1px solid #f1f5f9; font-size: 0.78rem; }
+.flight-row .flight-no { font-weight: 700; color: #2d6a9f; font-family: monospace; font-size: 0.8rem; }
+.flight-row .flight-time { color: #64748b; font-size: 0.72rem; }
+.transport-card .note { font-size: 0.72rem; color: #94a3b8; margin-top: 6px; }
+
+/* Footer */
+footer { text-align: center; padding: 16px 12px; color: #94a3b8; font-size: 0.68rem; border-top: 1px solid #e2e8f0; flex-shrink: 0; }
+footer a { color: #2d6a9f; text-decoration: none; }
+
+/* ---- Leaflet popup — mobile friendly ---- */
+.leaflet-popup-content { margin: 8px 10px; font-size: 0.8rem; line-height: 1.45; min-width: 200px; max-width: 260px; }
+.leaflet-popup-content img { width: 100%; height: 100px; object-fit: cover; border-radius: 5px; margin-bottom: 6px; background: #e2e8f0; }
+.leaflet-popup-content .popup-title { font-weight: 700; font-size: 0.9rem; color: #1e3a5f; }
+.leaflet-popup-content .popup-subtitle { font-size: 0.72rem; color: #64748b; margin-bottom: 4px; }
+.leaflet-popup-content .popup-link { display: inline-block; margin-top: 6px; color: #2d6a9f; font-weight: 600; font-size: 0.78rem; text-decoration: none; }
+.popup-img-fallback { display: flex; align-items: center; justify-content: center; width: 100%; height: 100px; background: #e2e8f0; border-radius: 5px; margin-bottom: 6px; font-size: 2rem; color: #94a3b8; }
+
+/* ---- Desktop: side-by-side layout for larger screens ---- */
+@media (min-width: 768px) {
+  html, body { height: auto; overflow: auto; }
+  body { background: #f0f4f8; }
+  .main-layout { display: grid; grid-template-columns: 1fr 1fr; height: auto; max-width: 1400px; margin: 16px auto 0; padding: 0 16px; gap: 0; }
+  .hero { padding: 32px 24px 28px; }
+  .hero h1 { font-size: 1.8rem; }
+  .hero .subtitle { font-size: 0.95rem; }
+  .hero .flags { font-size: 1.5rem; }
+  .hero .date-badge { font-size: 0.85rem; padding: 4px 16px; }
+  .quick-stats { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; padding: 16px 20px; max-width: 900px; margin: -16px auto 0; position: relative; z-index: 2; }
+  .quick-stats .stat { background: #fff; border-radius: 10px; padding: 10px 16px; box-shadow: 0 2px 10px rgba(0,0,0,0.06); font-size: 0.85rem; text-align: center; min-width: 80px; }
+  .stat strong { display: block; font-size: 1.2rem; color: #1e3a5f; }
+  .map-panel { position: sticky; top: 12px; height: calc(100vh - 40px); }
+  .map-panel .panel-label { padding: 8px 14px; font-size: 0.85rem; border-radius: 8px 8px 0 0; }
+  #map { height: calc(100% - 37px); border-radius: 0 0 8px 8px; border: 1px solid #e2e8f0; }
+  .map-legend { bottom: 16px; right: 16px; padding: 8px 12px; font-size: 0.75rem; line-height: 1.9; }
+  .bottom-sheet { flex: none; background: transparent; border-radius: 0; margin-top: 0; box-shadow: none; }
+  .sheet-handle { display: none; }
+  .itinerary-panel { padding: 0 0 40px 18px; overflow-y: auto; }
+  .section-title { font-size: 1.2rem; margin: 24px 0 14px; }
+  .day-card { padding: 16px 20px; margin-bottom: 12px; border-radius: 10px; }
+  .day-card:hover { box-shadow: 0 4px 14px rgba(0,0,0,0.08); transform: translateY(-1px); }
+  .day-num { font-size: 0.75rem; }
+  .day-date { font-size: 1rem; }
+  .day-activities li { font-size: 0.85rem; padding: 4px 0; }
+  .day-transport { font-size: 0.82rem; }
+  .transport-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 12px; }
+  .transport-card { padding: 16px 20px; }
+  footer { padding: 24px 16px; font-size: 0.75rem; }
+  .leaflet-popup-content { margin: 10px 14px; font-size: 0.85rem; min-width: 220px; }
+  .leaflet-popup-content img { height: 120px; }
+}
 
 /* Custom marker styles */
-.custom-marker { display: flex; align-items: center; justify-content: center; width: 30px; height: 30px; border-radius: 50%; color: #fff; font-weight: 700; font-size: 0.75rem; border: 3px solid #fff; box-shadow: 0 2px 6px rgba(0,0,0,0.3); }
+.custom-marker { display: flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 50%; color: #fff; font-weight: 700; font-size: 0.7rem; border: 2.5px solid #fff; box-shadow: 0 2px 5px rgba(0,0,0,0.3); }
 .marker-sweden { background: #006aa7; }
 .marker-finland { background: #003580; }
 .marker-estonia { background: #0072ce; }
@@ -46,68 +137,11 @@ body { font-family: -apple-system, BlinkMacSystemFont, "PingFang TC", "Noto Sans
 .marker-transport { background: #555; }
 .marker-hk { background: #ba0c2f; }
 
-/* Leaflet popup */
-.leaflet-popup-content { margin: 10px 14px; font-size: 0.9rem; line-height: 1.5; min-width: 220px; }
-.leaflet-popup-content img { width: 100%; height: 130px; object-fit: cover; border-radius: 6px; margin-bottom: 8px; background: #e2e8f0; }
-.leaflet-popup-content .popup-title { font-weight: 700; font-size: 1rem; color: #1e3a5f; }
-.leaflet-popup-content .popup-subtitle { font-size: 0.8rem; color: #64748b; margin-bottom: 6px; }
-.leaflet-popup-content .popup-link { display: inline-block; margin-top: 8px; color: #2d6a9f; font-weight: 600; font-size: 0.85rem; text-decoration: none; }
-.leaflet-popup-content .popup-link:hover { text-decoration: underline; }
-.popup-img-fallback { display: flex; align-items: center; justify-content: center; width: 100%; height: 130px; background: #e2e8f0; border-radius: 6px; margin-bottom: 8px; font-size: 2.5rem; color: #94a3b8; }
-
-/* Itinerary panel */
-.itinerary-panel { padding: 0 0 40px 20px; overflow-y: auto; }
-@media (max-width: 900px) { .itinerary-panel { padding: 16px 16px 40px; } }
-.section-title { font-size: 1.3rem; font-weight: 700; color: #1e3a5f; margin: 28px 0 16px; display: flex; align-items: center; gap: 8px; }
-.section-title i { color: #2d6a9f; }
-
-/* Day card */
-.day-card { background: #fff; border-radius: 12px; padding: 20px 24px; margin-bottom: 14px; box-shadow: 0 1px 8px rgba(0,0,0,0.06); border-left: 5px solid #ccc; transition: box-shadow 0.2s, transform 0.15s; cursor: pointer; }
-.day-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.1); transform: translateY(-1px); }
-.day-card:active { transform: scale(0.995); }
-.day-card .clickable-place { cursor: pointer; border-bottom: 1px dashed #94a3b8; transition: color 0.15s, border-color 0.15s; }
-.day-card .clickable-place:hover { color: #2d6a9f; border-bottom-color: #2d6a9f; }
-.day-card.day-sweden { border-left-color: #006aa7; }
-.day-card.day-finland { border-left-color: #003580; }
-.day-card.day-estonia { border-left-color: #0072ce; }
-.day-card.day-latvia { border-left-color: #9e3039; }
-.day-card.day-transit { border-left-color: #f59e0b; }
-.day-card.day-flight { border-left-color: #8b5cf6; }
-.day-header { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
-.day-num { font-size: 0.8rem; font-weight: 700; color: #64748b; text-transform: uppercase; letter-spacing: 1px; }
-.day-date { font-size: 1.1rem; font-weight: 800; color: #1e3a5f; }
-.day-country { display: inline-block; padding: 3px 12px; border-radius: 16px; font-size: 0.75rem; font-weight: 700; color: #fff; }
-.country-sweden { background: #006aa7; }
-.country-finland { background: #003580; }
-.country-estonia { background: #0072ce; }
-.country-latvia { background: #9e3039; }
-.country-transit { background: #64748b; }
-.day-route { font-size: 0.85rem; color: #475569; margin-bottom: 10px; }
-.day-activities { list-style: none; padding: 0; }
-.day-activities li { padding: 5px 0; font-size: 0.9rem; display: flex; align-items: flex-start; gap: 8px; }
-.day-activities li i { color: #2d6a9f; width: 18px; text-align: center; margin-top: 3px; flex-shrink: 0; }
-.day-transport { margin-top: 10px; padding: 8px 12px; background: #f1f5f9; border-radius: 8px; font-size: 0.85rem; display: flex; align-items: center; gap: 8px; color: #475569; }
-.day-transport i { color: #f59e0b; }
-
-/* Transport overview */
-.transport-section { max-width: 1400px; margin: 0 auto; padding: 0 16px 40px; }
-.transport-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 16px; }
-.transport-card { background: #fff; border-radius: 12px; padding: 20px 24px; box-shadow: 0 1px 8px rgba(0,0,0,0.06); }
-.transport-card h4 { font-size: 1rem; font-weight: 700; color: #1e3a5f; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
-.transport-card .flight-row { display: flex; justify-content: space-between; padding: 6px 0; border-bottom: 1px solid #f1f5f9; font-size: 0.88rem; }
-.flight-row .flight-no { font-weight: 700; color: #2d6a9f; font-family: monospace; font-size: 0.9rem; }
-.flight-row .flight-time { color: #64748b; font-size: 0.8rem; }
-.transport-card .note { font-size: 0.8rem; color: #94a3b8; margin-top: 8px; }
-
-/* Footer */
-footer { text-align: center; padding: 32px 16px; color: #94a3b8; font-size: 0.8rem; border-top: 1px solid #e2e8f0; max-width: 1400px; margin: 0 auto; }
-footer a { color: #2d6a9f; text-decoration: none; }
-footer a:hover { text-decoration: underline; }
-
 /* Scrollbar */
-::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar { width: 4px; }
 ::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
+::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 2px; }
+</style>
 </style>
 </head>
 <body>
@@ -146,7 +180,10 @@ footer a:hover { text-decoration: underline; }
     </div>
   </div>
 
-  <!-- Itinerary panel -->
+  <!-- Bottom sheet -->
+      <div class="bottom-sheet">
+        <div class="sheet-handle"><span></span></div>
+      <!-- Itinerary panel -->
   <div class="itinerary-panel">
     <div class="section-title"><i class="fa-solid fa-calendar-days"></i> 每日行程</div>
 
@@ -368,14 +405,14 @@ footer a:hover { text-decoration: underline; }
       <div class="note">每日營運 · 中轉約 2h20m · IST機場免簽證轉機 · 總行程約 23 小時</div>
     </div>
   </div>
+  <!-- Footer -->
+  <footer>
+    <p>旅行資訊來源：Rick Steves Travel Forum · lovetravellingblog.com · theblogtrotter.com · day-trips-from.com · Wikivoyage · Wikipedia</p>
+    <p>地圖：<a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> · 航班資料參考 Finnair / airBaltic / Turkish Airlines 官網</p>
+    <p style="margin-top: 6px;">Made for personal travel planning · 2026</p>
+  </footer>
 </div>
-
-<!-- Footer -->
-<footer>
-  <p>旅行資訊來源：Rick Steves Travel Forum · lovetravellingblog.com · theblogtrotter.com · day-trips-from.com · Wikivoyage · Wikipedia</p>
-  <p>地圖：<a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> · 航班資料參考 Finnair / airBaltic / Turkish Airlines 官網</p>
-  <p style="margin-top: 6px;">Made for personal travel planning · 2026</p>
-</footer>
+</div>
 
 <!-- Leaflet JS -->
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
