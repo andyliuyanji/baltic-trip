@@ -38,7 +38,15 @@ body { font-family: -apple-system, BlinkMacSystemFont, "PingFang TC", "Noto Sans
 .legend-line { display: inline-block; width: 24px; height: 3px; margin-right: 6px; vertical-align: middle; border-radius: 2px; }
 
 /* Custom marker styles */
-.custom-marker { display: flex; align-items: center; justify-content: center; width: 30px; height: 30px; border-radius: 50%; color: #fff; font-weight: 700; font-size: 0.75rem; border: 3px solid #fff; box-shadow: 0 2px 6px rgba(0,0,0,0.3); }
+
+/* Map marker number badges in itinerary */
+.mk-badge { display: inline-block; width: 18px; height: 18px; border-radius: 50%; color: #fff; font-size: 0.62rem; font-weight: 700; text-align: center; line-height: 18px; vertical-align: middle; margin: 0 2px; position: relative; top: -1px; }
+.mk-sweden { background: #006aa7; }
+.mk-finland { background: #003580; }
+.mk-estonia { background: #0072ce; }
+.mk-latvia { background: #9e3039; }
+@media (max-width: 900px) { .mk-badge { width: 15px; height: 15px; font-size: 0.55rem; line-height: 15px; } }
+  .custom-marker { display: flex; align-items: center; justify-content: center; width: 30px; height: 30px; border-radius: 50%; color: #fff; font-weight: 700; font-size: 0.75rem; border: 3px solid #fff; box-shadow: 0 2px 6px rgba(0,0,0,0.3); }
 .marker-sweden { background: #006aa7; }
 .marker-finland { background: #003580; }
 .marker-estonia { background: #0072ce; }
@@ -173,7 +181,7 @@ footer a:hover { text-decoration: underline; }
       <ul class="day-activities">
         <li><i class="fa-solid fa-plane-arrival"></i> <strong>AY803</strong> 赫爾辛基(HEL) 07:55 → 斯德哥爾摩(ARN) 08:05</li>
         <li><i class="fa-solid fa-train-subway"></i> Arlanda Express 機場快線 → 市中心 (20分鐘)</li>
-        <li><i class="fa-solid fa-person-walking"></i> <strong>Gamla Stan 老城</strong> — 歐洲保存最完好的中世紀古城之一，鵝卵石小巷、彩色建築</li>
+        <li><i class="fa-solid fa-person-walking"></i> <strong>Gamla Stan 老城</strong> <sup class="mk-badge mk-sweden">2</sup> — 歐洲保存最完好的中世紀古城之一，鵝卵石小巷、彩色建築</li>
         <li><i class="fa-solid fa-landmark"></i> Stortorget 大廣場 — 諾貝爾博物館所在地，經典彩色立面拍照點</li>
         <li><i class="fa-solid fa-mug-hot"></i> 瑞典 Fika 咖啡時光 — 肉桂卷 + 咖啡，體驗瑞典式下午茶</li>
       </ul>
@@ -188,10 +196,10 @@ footer a:hover { text-decoration: underline; }
       </div>
       <div class="day-route">斯德哥爾摩全日深度遊</div>
       <ul class="day-activities">
-        <li><i class="fa-solid fa-crown"></i> <strong>瑞典皇宮 Kungliga Slottet</strong> — 歐洲最大宮殿之一，12:15 衛兵換崗儀式 (週日13:15)</li>
+        <li><i class="fa-solid fa-crown"></i> <strong>瑞典皇宮 Kungliga Slottet</strong> <sup class="mk-badge mk-sweden">3</sup> — 歐洲最大宮殿之一，12:15 衛兵換崗儀式 (週日13:15)</li>
         <li><i class="fa-solid fa-church"></i> <strong>斯德哥爾摩大教堂 Storkyrkan</strong> — 老城最古老教堂，聖喬治屠龍雕像</li>
-        <li><i class="fa-solid fa-ship"></i> <strong>瓦薩博物館 Vasamuseet</strong> — 17世紀沉船完整打撈，世界唯一保存完好的古戰船</li>
-        <li><i class="fa-solid fa-building-columns"></i> <strong>市政廳 Stadshuset</strong> — 諾貝爾獎晚宴場地，登塔俯瞰全城</li>
+        <li><i class="fa-solid fa-ship"></i> <strong>瓦薩博物館 Vasamuseet</strong> <sup class="mk-badge mk-sweden">4</sup> — 17世紀沉船完整打撈，世界唯一保存完好的古戰船</li>
+        <li><i class="fa-solid fa-building-columns"></i> <strong>市政廳 Stadshuset</strong> <sup class="mk-badge mk-sweden">5</sup> — 諾貝爾獎晚宴場地，登塔俯瞰全城</li>
         <li><i class="fa-solid fa-archway"></i> Mårten Trotzigs Gränd — 全城最窄小巷 (僅90cm寬)</li>
       </ul>
       <div class="day-transport"><i class="fa-solid fa-clock"></i> 步行 + 地鐵 (SL Access Card 24hr)</div>
@@ -221,10 +229,10 @@ footer a:hover { text-decoration: underline; }
       <div class="day-route">抵達赫爾辛基 · 全日市區探索</div>
       <ul class="day-activities">
         <li><i class="fa-solid fa-anchor"></i> 10:00 渡輪抵達赫爾辛基</li>
-        <li><i class="fa-solid fa-church"></i> <strong>赫爾辛基大教堂 + 參議院廣場</strong> — 白色新古典主義地標，芬蘭最有名的建築</li>
-        <li><i class="fa-solid fa-store"></i> <strong>市集廣場 Kauppatori</strong> — 波羅的海鮮魚湯 Lohikeitto、馴鹿肉、當地手工藝</li>
-        <li><i class="fa-solid fa-ferry"></i> <strong>芬蘭堡 Suomenlinna</strong> — UNESCO 世界遺產海上要塞 (市集廣場搭渡輪15分鐘)</li>
-        <li><i class="fa-solid fa-hot-tub"></i> <strong>Löyly 桑拿</strong> — 設計感海濱桑拿，芬蘭必體驗！波羅的海冷水 plunge</li>
+        <li><i class="fa-solid fa-church"></i> <strong>赫爾辛基大教堂 + 參議院廣場</strong> <sup class="mk-badge mk-finland">7</sup> — 白色新古典主義地標，芬蘭最有名的建築</li>
+        <li><i class="fa-solid fa-store"></i> <strong>市集廣場 Kauppatori</strong> <sup class="mk-badge mk-finland">10</sup> — 波羅的海鮮魚湯 Lohikeitto、馴鹿肉、當地手工藝</li>
+        <li><i class="fa-solid fa-ferry"></i> <strong>芬蘭堡 Suomenlinna</strong> <sup class="mk-badge mk-finland">8</sup> — UNESCO 世界遺產海上要塞 (市集廣場搭渡輪15分鐘)</li>
+        <li><i class="fa-solid fa-hot-tub"></i> <strong>Löyly 桑拿</strong> <sup class="mk-badge mk-finland">11</sup> — 設計感海濱桑拿，芬蘭必體驗！波羅的海冷水 plunge</li>
       </ul>
       <div class="day-transport"><i class="fa-solid fa-clock"></i> 步行 + 電車 (HSL Day Pass) · 來回芬蘭堡渡輪 15min</div>
     </div>
@@ -237,7 +245,7 @@ footer a:hover { text-decoration: underline; }
       </div>
       <div class="day-route">赫爾辛基半日 → 渡輪至塔林</div>
       <ul class="day-activities">
-        <li><i class="fa-solid fa-church"></i> <strong>岩石教堂 Temppeliaukio</strong> — 整座教堂鑿入天然岩石中，絕佳音響效果</li>
+        <li><i class="fa-solid fa-church"></i> <strong>岩石教堂 Temppeliaukio</strong> <sup class="mk-badge mk-finland">9</sup> — 整座教堂鑿入天然岩石中，絕佳音響效果</li>
         <li><i class="fa-solid fa-paint-brush"></i> <strong>設計區 Design District</strong> — Marimekko、Iittala、Artek 芬蘭設計品牌旗艦店</li>
         <li><i class="fa-solid fa-book"></i> <strong>Oodi 中央圖書館</strong> — 獲獎現代建築，不只是一座圖書館</li>
         <li><i class="fa-solid fa-ship"></i> 16:30 <strong>Tallink Silja Megastar</strong> 赫爾辛基 → 塔林 (2小時)</li>
@@ -254,8 +262,8 @@ footer a:hover { text-decoration: underline; }
       </div>
       <div class="day-route">塔林全日深度遊</div>
       <ul class="day-activities">
-        <li><i class="fa-solid fa-hill-rockslide"></i> <strong>座堂山 Toompea</strong> — 制高點俯瞰全城紅色屋頂與波羅的海</li>
-        <li><i class="fa-solid fa-church"></i> <strong>亞歷山大·涅夫斯基主教座堂</strong> — 標誌性東正教洋蔥圓頂</li>
+        <li><i class="fa-solid fa-hill-rockslide"></i> <strong>座堂山 Toompea</strong> <sup class="mk-badge mk-estonia">14</sup> — 制高點俯瞰全城紅色屋頂與波羅的海</li>
+        <li><i class="fa-solid fa-church"></i> <strong>亞歷山大·涅夫斯基主教座堂</strong> <sup class="mk-badge mk-estonia">15</sup> — 標誌性東正教洋蔥圓頂</li>
         <li><i class="fa-solid fa-tower-observation"></i> <strong>St. Olaf's Tower</strong> — 258級台階登頂，最佳全景 (曾是世界最高建築!)</li>
         <li><i class="fa-solid fa-landmark"></i> <strong>市政廳廣場 Raekoja Plats</strong> — 中世紀市集氛圍，歐洲最古老的仍在運作的藥局</li>
         <li><i class="fa-solid fa-palette"></i> <strong>Telliskivi 創意城</strong> — 前工業區改造，街頭藝術、獨立設計、精釀啤酒</li>
@@ -273,7 +281,7 @@ footer a:hover { text-decoration: underline; }
       <div class="day-route">塔林 → 派爾努 → 里加 (🚗 自駕日)</div>
       <ul class="day-activities">
         <li><i class="fa-solid fa-car"></i> <strong>取車出發</strong> — 塔林市區出發，沿 E67 公路南下</li>
-        <li><i class="fa-solid fa-umbrella-beach"></i> <strong>派爾努 Pärnu</strong> (停留1.5hr) — 愛沙尼亞「夏日之都」，寬闊白沙灘、海濱長廊、SPA小鎮</li>
+        <li><i class="fa-solid fa-umbrella-beach"></i> <strong>派爾努 Pärnu</strong> <sup class="mk-badge mk-estonia">16</sup> (停留1.5hr) — 愛沙尼亞「夏日之都」，寬闊白沙灘、海濱長廊、SPA小鎮</li>
         <li><i class="fa-solid fa-mug-hot"></i> 派爾努老城咖啡小歇</li>
         <li><i class="fa-solid fa-flag"></i> 跨越邊境進入拉脫維亞 (無邊檢)</li>
         <li><i class="fa-solid fa-city"></i> 傍晚抵達里加，老城夜間漫步 + 道加瓦河畔日落</li>
@@ -289,10 +297,10 @@ footer a:hover { text-decoration: underline; }
       </div>
       <div class="day-route">里加全日深度遊 —「北方巴黎」</div>
       <ul class="day-activities">
-        <li><i class="fa-solid fa-church"></i> <strong>聖彼得教堂 St. Peter's Church</strong> — 登塔俯瞰里加老城全景</li>
-        <li><i class="fa-solid fa-landmark"></i> <strong>里加老城 Vecrīga</strong> — UNESCO 世界遺產，漢薩同盟時代建築群</li>
-        <li><i class="fa-solid fa-building"></i> <strong>新藝術建築區 Alberta iela</strong> — 全球密度最高的新藝術風格建築群，建築愛好者天堂</li>
-        <li><i class="fa-solid fa-shop"></i> <strong>中央市場 Centrāltirgus</strong> — 五座齊柏林飛艇機庫改造，歐洲最大市場，UNESCO 世界遺產</li>
+        <li><i class="fa-solid fa-church"></i> <strong>聖彼得教堂 St. Peter's Church</strong> <sup class="mk-badge mk-latvia">18</sup> — 登塔俯瞰里加老城全景</li>
+        <li><i class="fa-solid fa-landmark"></i> <strong>里加老城 Vecrīga</strong> <sup class="mk-badge mk-latvia">17</sup> — UNESCO 世界遺產，漢薩同盟時代建築群</li>
+        <li><i class="fa-solid fa-building"></i> <strong>新藝術建築區 Alberta iela</strong> <sup class="mk-badge mk-latvia">20</sup> — 全球密度最高的新藝術風格建築群，建築愛好者天堂</li>
+        <li><i class="fa-solid fa-shop"></i> <strong>中央市場 Centrāltirgus</strong> <sup class="mk-badge mk-latvia">19</sup> — 五座齊柏林飛艇機庫改造，歐洲最大市場，UNESCO 世界遺產</li>
         <li><i class="fa-solid fa-monument"></i> <strong>自由紀念碑 Freedom Monument</strong> — 拉脫維亞獨立象徵</li>
         <li><i class="fa-solid fa-utensils"></i> 晚餐推薦：<strong>Dom</strong> 傳統野味料理 (烤鷓鴣/慢燉兔肉) 或 <strong>Max Cekot Kitchen</strong> 精緻拉脫維亞菜</li>
       </ul>
@@ -308,10 +316,10 @@ footer a:hover { text-decoration: underline; }
       <div class="day-route">Gauja 國家公園一日遊 → 傍晚返港</div>
       <ul class="day-activities">
         <li><i class="fa-solid fa-car"></i> 自駕前往 <strong>Sigulda</strong> (里加出發 1小時，53km)</li>
-        <li><i class="fa-solid fa-castle"></i> <strong>Turaida 城堡</strong> — 紅磚中世紀城堡，Gauja 河谷全景 (門票 €8)</li>
+        <li><i class="fa-solid fa-castle"></i> <strong>Turaida 城堡</strong> <sup class="mk-badge mk-latvia">22</sup> — 紅磚中世紀城堡，Gauja 河谷全景 (門票 €8)</li>
         <li><i class="fa-solid fa-cable-car"></i> <strong>Sigulda 纜車</strong> — 橫跨 Gauja 河谷 (~€5)，俯瞰「拉脫維亞小瑞士」</li>
         <li><i class="fa-solid fa-dungeon"></i> <strong>Gutmanis 洞穴</strong> — 波羅的海最大砂岩洞穴，千年銘文</li>
-        <li><i class="fa-solid fa-castle"></i> <strong>Sigulda 城堡 (Livonian Order)</strong> — 十字軍時期要塞遺址</li>
+        <li><i class="fa-solid fa-castle"></i> <strong>Sigulda 城堡 (Livonian Order)</strong> <sup class="mk-badge mk-latvia">21</sup> — 十字軍時期要塞遺址</li>
         <li><i class="fa-solid fa-car"></i> 駕車返里加 (1小時)</li>
         <li><i class="fa-solid fa-plane-departure"></i> <strong>BT307</strong> 里加(RIX) 19:40 → 赫爾辛基(HEL) 20:40</li>
         <li><i class="fa-solid fa-clock"></i> HEL 機場休息室候機 4hr → <strong>AY99</strong> HEL 00:35 → HKG 17:40 (+1)</li>
