@@ -34,7 +34,6 @@ body { font-family: -apple-system, BlinkMacSystemFont, "PingFang TC", "Noto Sans
 .sheet-handle { display: flex; justify-content: center; padding: 8px 0 2px; flex-shrink: 0; }
 .sheet-handle span { display: block; width: 36px; height: 4px; background: #cbd5e1; border-radius: 2px; }
 
-/* Draggable divider */
 .divider { height: 8px; background: #e2e8f0; cursor: row-resize; flex-shrink: 0; position: relative; z-index: 20; display: flex; align-items: center; justify-content: center; }
 .divider::after { content: ''; display: block; width: 40px; height: 4px; background: #94a3b8; border-radius: 2px; }
 .divider.dragging { background: #cbd5e1; }
@@ -193,49 +192,48 @@ footer a { color: #2d6a9f; text-decoration: none; }
         <div><span class="day-num">Day 2</span><br><span class="day-date">8月29日 星期六</span></div>
         <span class="day-country country-estonia">🇫🇮→🇪🇪</span>
       </div>
-      <div class="day-route">抵達赫爾辛基 → 渡輪直達塔林 · 老城初探</div>
+      <div class="day-route">抵達 → 渡輪直達塔林 · 下午+晚上老城探索</div>
       <ul class="day-activities">
         <li><i class="fa-solid fa-plane-arrival"></i> 05:35 抵達赫爾辛基 · 機場快線 → 市中心</li>
-        <li><i class="fa-solid fa-ship"></i> 前往赫爾辛基西港 · 搭早班渡輪 → 塔林 (約 2 小時)</li>
-        <li><i class="fa-solid fa-anchor"></i> 抵達 <strong>塔林客運碼頭</strong> <sup class="mk-badge mk-estonia">1</sup></li>
-        <li><i class="fa-solid fa-person-walking"></i> <strong>塔林老城</strong> <sup class="mk-badge mk-estonia">2</sup> — UNESCO 世界遺產，中世紀古城</li>
+        <li><i class="fa-solid fa-ship"></i> 早班渡輪 → 抵達 <strong>塔林客運碼頭</strong> <sup class="mk-badge mk-estonia">1</sup> (~2hr)</li>
+        <li><i class="fa-solid fa-person-walking"></i> <strong>塔林老城</strong> <sup class="mk-badge mk-estonia">2</sup> — UNESCO 世界遺產，中世紀童話古城</li>
+        <li><i class="fa-solid fa-hill-rockslide"></i> <strong>座堂山 Toompea</strong> <sup class="mk-badge mk-estonia">3</sup> — 制高點俯瞰全城紅色屋頂</li>
         <li><i class="fa-solid fa-door-open"></i> Viru Gate 維魯門 — 夕陽下最美</li>
       </ul>
       <div class="day-transport"><i class="fa-solid fa-clock"></i> ✈ 抵達 + 🚢 赫爾辛基 → 塔林 ~2hr</div>
     </div>
 
     <!-- Day 3 -->
-    <div class="day-card day-estonia">
+    <div class="day-card day-transit">
       <div class="day-header">
         <div><span class="day-num">Day 3</span><br><span class="day-date">8月30日 星期日</span></div>
-        <span class="day-country country-estonia">🇪🇪 愛沙尼亞</span>
+        <span class="day-country country-estonia">🇪🇪→🇫🇮</span>
       </div>
-      <div class="day-route">塔林全日深度遊</div>
+      <div class="day-route">塔林上午收尾 → 午後渡輪返回赫爾辛基</div>
       <ul class="day-activities">
-        <li><i class="fa-solid fa-hill-rockslide"></i> <strong>座堂山 Toompea</strong> <sup class="mk-badge mk-estonia">3</sup> — 制高點俯瞰全城紅色屋頂與波羅的海</li>
-        <li><i class="fa-solid fa-church"></i> <strong>亞歷山大·涅夫斯基主教座堂</strong> <sup class="mk-badge mk-estonia">4</sup> — 東正教洋蔥圓頂</li>
-        <li><i class="fa-solid fa-tower-observation"></i> <strong>St. Olaf's Tower</strong> — 258級台階登頂</li>
-        <li><i class="fa-solid fa-landmark"></i> <strong>市政廳廣場 Raekoja Plats</strong> — 歐洲最古老藥局</li>
-        <li><i class="fa-solid fa-palette"></i> <strong>Telliskivi 創意城</strong> — 街頭藝術、精釀啤酒</li>
-        <li><i class="fa-solid fa-utensils"></i> 晚餐：<strong>Rataskaevu 16</strong> 傳統愛沙尼亞菜</li>
+        <li><i class="fa-solid fa-church"></i> 上午：<strong>亞歷山大·涅夫斯基主教座堂</strong> <sup class="mk-badge mk-estonia">4</sup> · St. Olaf's Tower 登頂</li>
+        <li><i class="fa-solid fa-landmark"></i> <strong>市政廳廣場</strong> — 歐洲最古老藥局</li>
+        <li><i class="fa-solid fa-ship"></i> 午後 Tallink Megastar 塔林 → <strong>赫爾辛基西港</strong> <sup class="mk-badge mk-finland">5</sup> (2hr)</li>
+        <li><i class="fa-solid fa-church"></i> 傍晚：<strong>赫爾辛基大教堂</strong> <sup class="mk-badge mk-finland">6</sup> 參議院廣場 · Esplanadi 公園</li>
       </ul>
-      <div class="day-transport"><i class="fa-solid fa-clock"></i> 全程步行 · 老城緊湊且行人友善</div>
+      <div class="day-transport"><i class="fa-solid fa-clock"></i> 🚢 塔林 → 赫爾辛基 午後出發 ~2hr</div>
     </div>
 
     <!-- Day 4 -->
-    <div class="day-card day-transit">
+    <div class="day-card day-finland">
       <div class="day-header">
         <div><span class="day-num">Day 4</span><br><span class="day-date">8月31日 星期一</span></div>
-        <span class="day-country country-estonia">🇪🇪→🇫🇮</span>
+        <span class="day-country country-finland">🇫🇮 芬蘭</span>
       </div>
-      <div class="day-route">塔林悠閒上午 → 渡輪返回赫爾辛基</div>
+      <div class="day-route">赫爾辛基全日探索 (Day 1)</div>
       <ul class="day-activities">
-        <li><i class="fa-solid fa-camera"></i> 上午：塔林老城最後漫步，Kiek in de Kök 炮塔博物館</li>
-        <li><i class="fa-solid fa-shop"></i> 老城手工藝紀念品 — 羊毛製品、手工朱古力</li>
-        <li><i class="fa-solid fa-ship"></i> 午後 Tallink Megastar 塔林 → <strong>赫爾辛基西港</strong> <sup class="mk-badge mk-finland">5</sup> (2hr)</li>
-        <li><i class="fa-solid fa-church"></i> 傍晚：<strong>赫爾辛基大教堂</strong> <sup class="mk-badge mk-finland">6</sup> 參議院廣場夜間外觀</li>
+        <li><i class="fa-solid fa-store"></i> <strong>市集廣場 Kauppatori</strong> <sup class="mk-badge mk-finland">7</sup> — 波羅的海鮮魚湯、馴鹿肉</li>
+        <li><i class="fa-solid fa-ferry"></i> <strong>芬蘭堡 Suomenlinna</strong> <sup class="mk-badge mk-finland">8</sup> — UNESCO 海上要塞 (渡輪15分鐘)</li>
+        <li><i class="fa-solid fa-church"></i> <strong>岩石教堂 Temppeliaukio</strong> <sup class="mk-badge mk-finland">9</sup> — 鑿入天然岩石中</li>
+        <li><i class="fa-solid fa-hot-tub"></i> <strong>Löyly 桑拿</strong> <sup class="mk-badge mk-finland">10</sup> — 設計感海濱桑拿，波羅的海冷水 plunge</li>
+        <li><i class="fa-solid fa-mug-hot"></i> 芬蘭 Fika · 肉桂卷 + 咖啡</li>
       </ul>
-      <div class="day-transport"><i class="fa-solid fa-clock"></i> 🚢 塔林 → 赫爾辛基 · 約 2 小時</div>
+      <div class="day-transport"><i class="fa-solid fa-clock"></i> 步行 + 電車 (HSL Day Pass)</div>
     </div>
 
     <!-- Day 5 -->
@@ -244,38 +242,21 @@ footer a { color: #2d6a9f; text-decoration: none; }
         <div><span class="day-num">Day 5</span><br><span class="day-date">9月1日 星期二</span></div>
         <span class="day-country country-finland">🇫🇮 芬蘭</span>
       </div>
-      <div class="day-route">赫爾辛基全日探索 (Day 1)</div>
-      <ul class="day-activities">
-        <li><i class="fa-solid fa-store"></i> <strong>市集廣場 Kauppatori</strong> <sup class="mk-badge mk-finland">7</sup> — 波羅的海鮮魚湯、馴鹿肉</li>
-        <li><i class="fa-solid fa-ferry"></i> <strong>芬蘭堡 Suomenlinna</strong> <sup class="mk-badge mk-finland">8</sup> — UNESCO 世界遺產海上要塞 (渡輪15分鐘)</li>
-        <li><i class="fa-solid fa-church"></i> <strong>岩石教堂 Temppeliaukio</strong> <sup class="mk-badge mk-finland">9</sup> — 鑿入天然岩石中，絕佳音響效果</li>
-        <li><i class="fa-solid fa-hot-tub"></i> <strong>Löyly 桑拿</strong> <sup class="mk-badge mk-finland">10</sup> — 設計感海濱桑拿，波羅的海冷水 plunge</li>
-        <li><i class="fa-solid fa-mug-hot"></i> 芬蘭 Fika · 肉桂卷 + 咖啡</li>
-      </ul>
-      <div class="day-transport"><i class="fa-solid fa-clock"></i> 步行 + 電車 (HSL Day Pass)</div>
-    </div>
-
-    <!-- Day 6 -->
-    <div class="day-card day-finland">
-      <div class="day-header">
-        <div><span class="day-num">Day 6</span><br><span class="day-date">9月2日 星期三</span></div>
-        <span class="day-country country-finland">🇫🇮 芬蘭</span>
-      </div>
       <div class="day-route">赫爾辛基悠閒探索 (Day 2)</div>
       <ul class="day-activities">
         <li><i class="fa-solid fa-book"></i> <strong>Oodi 中央圖書館</strong> <sup class="mk-badge mk-finland">11</sup> — 獲獎現代建築</li>
         <li><i class="fa-solid fa-paint-brush"></i> <strong>設計區 Design District</strong> — Marimekko、Iittala、Artek</li>
         <li><i class="fa-solid fa-shop"></i> <strong>Old Market Hall</strong> — 百年室內市場，三文魚湯午餐</li>
-        <li><i class="fa-solid fa-monument"></i> Esplanadi 公園散步 · Uspenski 大教堂</li>
+        <li><i class="fa-solid fa-monument"></i> Uspenski 大教堂 — 紅磚金頂</li>
         <li><i class="fa-solid fa-mug-hot"></i> 下午自由時間 · 咖啡小歇</li>
       </ul>
       <div class="day-transport"><i class="fa-solid fa-clock"></i> 步行 + 電車 · 輕鬆漫遊赫爾辛基</div>
     </div>
 
-    <!-- Day 7 -->
+    <!-- Day 6 -->
     <div class="day-card day-transit">
       <div class="day-header">
-        <div><span class="day-num">Day 7</span><br><span class="day-date">9月3日 星期四</span></div>
+        <div><span class="day-num">Day 6</span><br><span class="day-date">9月2日 星期三</span></div>
         <span class="day-country country-transit">🇫🇮 + 🚢</span>
       </div>
       <div class="day-route">赫爾辛基半日 → 過夜渡輪至斯德哥爾摩</div>
@@ -288,13 +269,13 @@ footer a { color: #2d6a9f; text-decoration: none; }
       <div class="day-transport"><i class="fa-solid fa-ferry"></i> 🚢 赫爾辛基 → 斯德哥爾摩 · 約 17 小時</div>
     </div>
 
-    <!-- Day 8 -->
+    <!-- Day 7 -->
     <div class="day-card day-sweden">
       <div class="day-header">
-        <div><span class="day-num">Day 8</span><br><span class="day-date">9月4日 星期五</span></div>
+        <div><span class="day-num">Day 7</span><br><span class="day-date">9月3日 星期四</span></div>
         <span class="day-country country-sweden">🇸🇪 瑞典</span>
       </div>
-      <div class="day-route">抵達斯德哥爾摩 · 全日老城探索 (Day 1)</div>
+      <div class="day-route">抵達斯德哥爾摩 · 老城全日探索 (Day 1)</div>
       <ul class="day-activities">
         <li><i class="fa-solid fa-anchor"></i> 10:00 渡輪抵達</li>
         <li><i class="fa-solid fa-person-walking"></i> <strong>Gamla Stan 老城</strong> <sup class="mk-badge mk-sweden">13</sup> — 中世紀鵝卵石小巷、彩色建築</li>
@@ -307,19 +288,35 @@ footer a { color: #2d6a9f; text-decoration: none; }
       <div class="day-transport"><i class="fa-solid fa-clock"></i> 全程步行 · 老城 + Djurgården 島</div>
     </div>
 
+    <!-- Day 8 -->
+    <div class="day-card day-sweden">
+      <div class="day-header">
+        <div><span class="day-num">Day 8</span><br><span class="day-date">9月4日 星期五</span></div>
+        <span class="day-country country-sweden">🇸🇪 瑞典</span>
+      </div>
+      <div class="day-route">斯德哥爾摩 (Day 2) — 市政廳 · 動物園島</div>
+      <ul class="day-activities">
+        <li><i class="fa-solid fa-building-columns"></i> <strong>市政廳 Stadshuset</strong> <sup class="mk-badge mk-sweden">16</sup> — 諾貝爾獎晚宴場地，登塔俯瞰全城</li>
+        <li><i class="fa-solid fa-tree"></i> <strong>Djurgården 動物園島</strong> — 水濱散步</li>
+        <li><i class="fa-solid fa-landmark"></i> <strong>Skansen 露天博物館</strong> — 世界最古老露天博物館 + 北歐動物園</li>
+        <li><i class="fa-solid fa-palette"></i> <strong>Fotografiska 攝影博物館</strong> — 世界級當代攝影，海濱咖啡廳日落</li>
+        <li><i class="fa-solid fa-shop"></i> <strong>Östermalmshallen 市場</strong> — 瑞典海鮮與肉丸晚餐</li>
+      </ul>
+      <div class="day-transport"><i class="fa-solid fa-clock"></i> 步行 + 電車 · Djurgården 可搭渡輪</div>
+    </div>
+
     <!-- Day 9 -->
     <div class="day-card day-sweden">
       <div class="day-header">
         <div><span class="day-num">Day 9</span><br><span class="day-date">9月5日 星期六</span></div>
         <span class="day-country country-sweden">🇸🇪 瑞典</span>
       </div>
-      <div class="day-route">斯德哥爾摩全日探索 (Day 2) → 傍晚飛赫爾辛基轉機</div>
+      <div class="day-route">斯德哥爾摩悠閒日 (Day 3) → 傍晚飛赫爾辛基轉機</div>
       <ul class="day-activities">
-        <li><i class="fa-solid fa-building-columns"></i> <strong>市政廳 Stadshuset</strong> <sup class="mk-badge mk-sweden">16</sup> — 諾貝爾獎晚宴場地，登塔俯瞰全城</li>
-        <li><i class="fa-solid fa-tree"></i> <strong>Djurgården 動物園島</strong> — 水濱散步</li>
-        <li><i class="fa-solid fa-landmark"></i> <strong>Skansen 露天博物館</strong> — 世界最古老露天博物館</li>
-        <li><i class="fa-solid fa-camera"></i> Monteliusvägen 觀景台 — 老城+市政廳全景</li>
-        <li><i class="fa-solid fa-shop"></i> <strong>Östermalmshallen 市場</strong> — 瑞典海鮮與肉丸</li>
+        <li><i class="fa-solid fa-ship"></i> <strong>斯德哥爾摩群島遊船</strong> — 2-3 小時穿梭 30,000 個島嶼</li>
+        <li><i class="fa-solid fa-camera"></i> Monteliusvägen 觀景台 — 老城 + 市政廳全景</li>
+        <li><i class="fa-solid fa-hippo"></i> <strong>Södermalm 南島</strong> — hipster 區，獨立咖啡館、復古店</li>
+        <li><i class="fa-solid fa-mug-hot"></i> 最後的瑞典 Fika · 南島咖啡館小歇</li>
         <li><i class="fa-solid fa-car"></i> 傍晚前往 <strong>ARN 機場</strong> <sup class="mk-badge mk-sweden">17</sup> (Arlanda Express 20min)</li>
         <li><i class="fa-solid fa-plane"></i> <strong>AY818</strong> ARN 21:10 → HEL 22:20</li>
       </ul>
@@ -341,7 +338,6 @@ footer a { color: #2d6a9f; text-decoration: none; }
       <div class="day-transport"><i class="fa-solid fa-clock"></i> ✈ AY99 12h05m · 9月6日 17:40 HKT</div>
     </div>
 
-    <!-- Transport Overview -->
     <div class="section-title"><i class="fa-solid fa-route"></i> 交通總覽</div>
     <div class="transport-grid">
       <div class="transport-card">
@@ -366,16 +362,15 @@ footer a { color: #2d6a9f; text-decoration: none; }
         <h4><i class="fa-solid fa-train-subway" style="color:#10b981;"></i> 🚇 市內交通</h4>
         <div class="flight-row"><span>赫爾辛基機場 → 市中心</span><span>HSL 火車</span><span class="flight-time">~30min</span></div>
         <div class="flight-row"><span>斯德哥爾摩 → ARN</span><span>Arlanda Express</span><span class="flight-time">~20min</span></div>
-        <div class="note">赫爾辛基 HSL Day Pass · 斯德哥爾摩步行+單程票 · 三城老城均步行可達</div>
+        <div class="note">赫爾辛基 HSL Day Pass · 斯德哥爾摩 SL Access Card · 三城老城步行可達</div>
       </div>
     </div>
-
-    <div class="section-title" style="margin-top: 16px;"><i class="fa-solid fa-circle-exclamation"></i> 備選回程方案 (土耳其航空)</div>
+    <div class="section-title" style="margin-top: 16px;"><i class="fa-solid fa-circle-exclamation"></i> 備選回程 (土耳其航空)</div>
     <div class="transport-card">
       <h4><i class="fa-solid fa-plane" style="color:#8b5cf6;"></i> 經伊斯坦布爾中轉</h4>
       <div class="flight-row"><span>ARN → IST</span><span class="flight-no">TK1796</span><span class="flight-time">19:30→23:55</span></div>
       <div class="flight-row"><span>IST → HKG</span><span class="flight-no">TK70</span><span class="flight-time">01:35→17:25 (+1)</span></div>
-      <div class="note">每日營運 · IST免簽轉機 · 總行程約 22 小時</div>
+      <div class="note">每日營運 · IST免簽轉機 · 約 22 小時</div>
     </div>
   </div>
   <footer>
@@ -409,7 +404,7 @@ var markers = [
     desc: '制高點俯瞰全城紅色屋頂與波羅的海 · 愛沙尼亞國會所在地',
     img: img('toompea.jpg'),
     link: 'https://en.wikipedia.org/wiki/Toompea',
-    cls: 'marker-estonia', day: 3 },
+    cls: 'marker-estonia', day: 2 },
 
   { id: 4, lat: 59.436, lng: 24.741, name: '涅夫斯基主教座堂', en: 'Alexander Nevsky Cathedral',
     desc: '東正教標誌性洋蔥圓頂 · 愛沙尼亞最大的東正教堂',
@@ -419,70 +414,70 @@ var markers = [
 
   { id: 5, lat: 60.154, lng: 24.921, name: '赫爾辛基西港碼頭', en: 'Helsinki West Harbour',
     desc: 'Tallink Silja 渡輪來回塔林 · 距市中心約 3km',
-    img: '', link: '', cls: 'marker-transport', day: 4 },
+    img: '', link: '', cls: 'marker-transport', day: 3 },
 
   { id: 6, lat: 60.170, lng: 24.952, name: '赫爾辛基大教堂', en: 'Helsinki Cathedral & Senate Square',
     desc: '白色新古典主義地標，芬蘭最著名的建築，參議院廣場全景',
     img: img('helsinki_cathedral.jpg'),
     link: 'https://en.wikipedia.org/wiki/Helsinki_Cathedral',
-    cls: 'marker-finland', day: 4 },
+    cls: 'marker-finland', day: 3 },
 
   { id: 7, lat: 60.167, lng: 24.953, name: '市集廣場 Kauppatori', en: 'Market Square (Kauppatori)',
     desc: '波羅的海鮮魚湯、馴鹿肉、當地手工藝品 · 渡輪碼頭出發點',
     img: img('market_square.jpg'),
     link: 'https://en.wikipedia.org/wiki/Market_Square,_Helsinki',
-    cls: 'marker-finland', day: 5 },
+    cls: 'marker-finland', day: 4 },
 
   { id: 8, lat: 60.148, lng: 24.988, name: '芬蘭堡 Suomenlinna', en: 'Suomenlinna Sea Fortress',
     desc: 'UNESCO 世界遺產 · 18世紀海上要塞 · 市集廣場搭渡輪 15 分鐘',
     img: img('suomenlinna.jpg'),
     link: 'https://en.wikipedia.org/wiki/Suomenlinna',
-    cls: 'marker-finland', day: 5 },
+    cls: 'marker-finland', day: 4 },
 
   { id: 9, lat: 60.173, lng: 24.925, name: '岩石教堂', en: 'Temppeliaukio Church (Rock Church)',
     desc: '整座教堂鑿入天然岩石中，絕佳音響效果，建築奇蹟',
     img: img('rock_church.jpg'),
     link: 'https://en.wikipedia.org/wiki/Temppeliaukio_Church',
-    cls: 'marker-finland', day: 5 },
+    cls: 'marker-finland', day: 4 },
 
   { id: 10, lat: 60.152, lng: 24.924, name: 'Löyly 桑拿', en: 'Löyly Sauna & Restaurant',
     desc: '設計感海濱桑拿 · 芬蘭必體驗！波羅的海冷水 plunge',
     img: '', link: 'https://www.loylyhelsinki.fi/en/',
-    cls: 'marker-finland', day: 5 },
+    cls: 'marker-finland', day: 4 },
 
   { id: 11, lat: 60.174, lng: 24.938, name: 'Oodi 中央圖書館', en: 'Oodi Helsinki Central Library',
     desc: '獲獎現代建築 · 市民共享空間 · 不只是圖書館',
     img: '', link: 'https://en.wikipedia.org/wiki/Helsinki_Central_Library_Oodi',
-    cls: 'marker-finland', day: 6 },
+    cls: 'marker-finland', day: 5 },
 
   { id: 12, lat: 59.344, lng: 18.109, name: 'Värtahamnen 渡輪碼頭', en: 'Värtahamnen Ferry Terminal',
     desc: 'Tallink Silja Line 出發港 · 過夜渡輪前往斯德哥爾摩 (16:45 啟航)',
     img: '', link: 'https://en.wikipedia.org/wiki/Ports_of_the_Baltic_Sea',
-    cls: 'marker-transport', day: 7 },
+    cls: 'marker-transport', day: 6 },
 
   { id: 13, lat: 59.325, lng: 18.071, name: 'Gamla Stan 老城', en: 'Gamla Stan (Old Town)',
     desc: '歐洲保存最完好的中世紀古城之一，鵝卵石小巷、彩色建築',
     img: img('gamla_stan.jpg'),
     link: 'https://en.wikivoyage.org/wiki/Stockholm/Gamla_stan',
-    cls: 'marker-sweden', day: 8 },
+    cls: 'marker-sweden', day: 7 },
 
   { id: 14, lat: 59.327, lng: 18.072, name: '瑞典皇宮', en: 'Kungliga Slottet (Royal Palace)',
     desc: '歐洲最大宮殿之一，巴洛克風格。每日衛兵換崗儀式',
     img: img('royal_palace.jpg'),
     link: 'https://en.wikipedia.org/wiki/Stockholm_Palace',
-    cls: 'marker-sweden', day: 8 },
+    cls: 'marker-sweden', day: 7 },
 
   { id: 15, lat: 59.328, lng: 18.091, name: '瓦薩博物館', en: 'Vasamuseet (Vasa Museum)',
     desc: '世界唯一保存完好的17世紀古戰船，瑞典最受歡迎的博物館',
     img: img('vasa_museum.jpg'),
     link: 'https://en.wikipedia.org/wiki/Vasa_Museum',
-    cls: 'marker-sweden', day: 8 },
+    cls: 'marker-sweden', day: 7 },
 
   { id: 16, lat: 59.327, lng: 18.055, name: '斯德哥爾摩市政廳', en: 'Stockholm City Hall (Stadshuset)',
     desc: '諾貝爾獎年度晚宴場地，可登塔俯瞰全城',
     img: img('city_hall.jpg'),
     link: 'https://en.wikipedia.org/wiki/Stockholm_City_Hall',
-    cls: 'marker-sweden', day: 9 },
+    cls: 'marker-sweden', day: 8 },
 
   { id: 17, lat: 59.652, lng: 17.931, name: '斯德哥爾摩阿蘭達機場 ARN', en: 'Stockholm Arlanda Airport',
     desc: '返程出發 · AY818 → 赫爾辛基 · Arlanda Express 20 分鐘到機場',
@@ -576,12 +571,10 @@ document.querySelectorAll('.day-card').forEach(function(card) {
 });
 
 var nameToMarker = {
-  '塔林客運碼頭': 1,
-  '塔林老城': 2,
+  '塔林客運碼頭': 1, '塔林老城': 2,
   '座堂山 Toompea': 3,
   '亞歷山大·涅夫斯基主教座堂': 4,
-  '赫爾辛基西港': 5,
-  '赫爾辛基大教堂': 6,
+  '赫爾辛基西港': 5, '赫爾辛基大教堂': 6,
   '市集廣場 Kauppatori': 7,
   '芬蘭堡 Suomenlinna': 8,
   '岩石教堂 Temppeliaukio': 9,
@@ -589,10 +582,8 @@ var nameToMarker = {
   'Oodi 中央圖書館': 11,
   'Värtahamnen 渡輪碼頭': 12,
   'Gamla Stan 老城': 13,
-  '瑞典皇宮 Kungliga Slottet': 14,
-  '瑞典皇宮': 14,
-  '瓦薩博物館 Vasamuseet': 15,
-  '瓦薩博物館': 15,
+  '瑞典皇宮 Kungliga Slottet': 14, '瑞典皇宮': 14,
+  '瓦薩博物館 Vasamuseet': 15, '瓦薩博物館': 15,
   '市政廳 Stadshuset': 16,
   'ARN 機場': 17
 };
@@ -637,7 +628,6 @@ document.querySelectorAll('.day-card').forEach(function(card) {
   });
 });
 
-/* ===== DRAGGABLE DIVIDER ===== */
 (function() {
   var divider = document.querySelector('.divider');
   var mapPanel = document.querySelector('.map-panel');
