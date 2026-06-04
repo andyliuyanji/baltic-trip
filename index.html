@@ -3,17 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>波羅的海三國10日旅行計劃 — 香港出發 2026</title>
+<title>波羅的海+奧地利12日旅行計劃 — 香港出發 2026</title>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { font-family: -apple-system, BlinkMacSystemFont, "PingFang TC", "Noto Sans TC", "Microsoft YaHei", sans-serif; background: #f0f4f8; color: #1a202c; line-height: 1.6; }
 
-.hero { background: linear-gradient(135deg, #1e3a5f 0%, #2d6a9f 40%, #4a9db5 70%, #8fc9b9 100%); color: #fff; padding: 48px 24px 40px; text-align: center; }
+.hero { background: linear-gradient(135deg, #1e3a5f 0%, #2d6a9f 25%, #4a9db5 50%, #8fc9b9 75%, #c0392b 100%); color: #fff; padding: 48px 24px 40px; text-align: center; }
 .hero h1 { font-size: 2.2rem; font-weight: 800; margin-bottom: 8px; letter-spacing: -0.5px; }
 .hero .subtitle { font-size: 1.05rem; opacity: 0.9; margin-bottom: 16px; }
-.hero .flags { font-size: 2rem; margin-bottom: 12px; letter-spacing: 8px; }
+.hero .flags { font-size: 1.8rem; margin-bottom: 12px; letter-spacing: 4px; }
 .hero .date-badge { display: inline-block; background: rgba(255,255,255,0.18); border: 1px solid rgba(255,255,255,0.3); border-radius: 24px; padding: 6px 20px; font-size: 0.95rem; }
 
 .quick-stats { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; padding: 20px 24px; max-width: 900px; margin: -20px auto 0; position: relative; z-index: 2; }
@@ -33,14 +33,14 @@ body { font-family: -apple-system, BlinkMacSystemFont, "PingFang TC", "Noto Sans
 .legend-line { display: inline-block; width: 24px; height: 3px; margin-right: 6px; vertical-align: middle; border-radius: 2px; }
 
 .mk-badge { display: inline-block; width: 18px; height: 18px; border-radius: 50%; color: #fff; font-size: 0.62rem; font-weight: 700; text-align: center; line-height: 18px; vertical-align: middle; margin: 0 2px; position: relative; top: -1px; }
-.mk-sweden { background: #006aa7; }
-.mk-finland { background: #003580; }
 .mk-estonia { background: #0072ce; }
+.mk-finland { background: #003580; }
+.mk-austria { background: #ed2939; }
 @media (max-width: 900px) { .mk-badge { width: 15px; height: 15px; font-size: 0.55rem; line-height: 15px; } }
 .custom-marker { display: flex; align-items: center; justify-content: center; width: 30px; height: 30px; border-radius: 50%; color: #fff; font-weight: 700; font-size: 0.75rem; border: 3px solid #fff; box-shadow: 0 2px 6px rgba(0,0,0,0.3); }
-.marker-sweden { background: #006aa7; }
-.marker-finland { background: #003580; }
 .marker-estonia { background: #0072ce; }
+.marker-finland { background: #003580; }
+.marker-austria { background: #ed2939; }
 .marker-transport { background: #555; }
 .marker-hk { background: #ba0c2f; }
 
@@ -62,7 +62,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, "PingFang TC", "Noto Sans
 .day-card:active { transform: scale(0.995); }
 .day-card .clickable-place { cursor: pointer; border-bottom: 1px dashed #94a3b8; transition: color 0.15s, border-color 0.15s; }
 .day-card .clickable-place:hover { color: #2d6a9f; border-bottom-color: #2d6a9f; }
-.day-card.day-sweden { border-left-color: #006aa7; }
+.day-card.day-austria { border-left-color: #ed2939; }
 .day-card.day-finland { border-left-color: #003580; }
 .day-card.day-estonia { border-left-color: #0072ce; }
 .day-card.day-transit { border-left-color: #f59e0b; }
@@ -71,9 +71,9 @@ body { font-family: -apple-system, BlinkMacSystemFont, "PingFang TC", "Noto Sans
 .day-num { font-size: 0.8rem; font-weight: 700; color: #64748b; text-transform: uppercase; letter-spacing: 1px; }
 .day-date { font-size: 1.1rem; font-weight: 800; color: #1e3a5f; }
 .day-country { display: inline-block; padding: 3px 12px; border-radius: 16px; font-size: 0.75rem; font-weight: 700; color: #fff; }
-.country-sweden { background: #006aa7; }
-.country-finland { background: #003580; }
 .country-estonia { background: #0072ce; }
+.country-finland { background: #003580; }
+.country-austria { background: #ed2939; }
 .country-transit { background: #64748b; }
 .day-route { font-size: 0.85rem; color: #475569; margin-bottom: 10px; }
 .day-activities { list-style: none; padding: 0; }
@@ -103,19 +103,19 @@ footer a:hover { text-decoration: underline; }
 <body>
 
 <div class="hero">
-  <div class="flags">🇭🇰 ✈ 🇫🇮 🚢 🇪🇪 🚢 🇫🇮 🚢 🇸🇪 ✈ 🇭🇰</div>
-  <h1>波羅的海三國 · 10日旅行計劃</h1>
-  <p class="subtitle">香港出發 — 愛沙尼亞 · 芬蘭 · 瑞典</p>
-  <span class="date-badge">📅 2026年8月28日 (五) – 9月6日 (日)</span>
+  <div class="flags">🇭🇰 ✈ 🇫🇮 🚢 🇪🇪 🚢 🇫🇮 ✈ 🇦🇹 🚗 🇦🇹 ✈ 🇭🇰</div>
+  <h1>波羅的海 + 奧地利 · 12日旅行計劃</h1>
+  <p class="subtitle">香港出發 — 愛沙尼亞 · 芬蘭 · 奧地利（自駕湖區+薩爾茨堡）</p>
+  <span class="date-badge">📅 2026年8月26日 (三) – 9月6日 (日)</span>
 </div>
 
 <div class="quick-stats">
-  <div class="stat"><strong>3</strong>個國家</div>
-  <div class="stat"><strong>10</strong>天行程</div>
-  <div class="stat"><strong>2</strong>程航班</div>
-  <div class="stat"><strong>3</strong>段渡輪</div>
-  <div class="stat"><strong>4</strong>座城市</div>
-  <div class="stat"><strong>16+</strong>精選景點</div>
+  <div class="stat"><strong>4</strong>個地區</div>
+  <div class="stat"><strong>12</strong>天行程</div>
+  <div class="stat"><strong>4</strong>程航班</div>
+  <div class="stat"><strong>2</strong>段渡輪</div>
+  <div class="stat"><strong>🚗</strong>自駕奧地利</div>
+  <div class="stat"><strong>18+</strong>精選景點</div>
 </div>
 
 <div class="main-layout">
@@ -125,9 +125,10 @@ footer a:hover { text-decoration: underline; }
     <div class="map-legend">
       <div><span class="legend-dot" style="background:#0072ce;"></span> 愛沙尼亞景點</div>
       <div><span class="legend-dot" style="background:#003580;"></span> 芬蘭景點</div>
-      <div><span class="legend-dot" style="background:#006aa7;"></span> 瑞典景點</div>
+      <div><span class="legend-dot" style="background:#ed2939;"></span> 奧地利景點</div>
       <div><span class="legend-line" style="border-top:2px dashed #8b5cf6; height:0; display:inline-block;"></span> 飛行路線</div>
       <div><span class="legend-line" style="border-top:2px dashed #f59e0b; height:0; display:inline-block;"></span> 渡輪航線</div>
+      <div><span class="legend-line" style="background:#10b981; display:inline-block;"></span> 自駕路線</div>
     </div>
   </div>
 
@@ -137,7 +138,7 @@ footer a:hover { text-decoration: underline; }
     <!-- Day 1 -->
     <div class="day-card day-flight">
       <div class="day-header">
-        <div><span class="day-num">Day 1</span><br><span class="day-date">8月28日 星期五</span></div>
+        <div><span class="day-num">Day 1</span><br><span class="day-date">8月26日 星期三</span></div>
         <span class="day-country country-transit">✈ 飛行中</span>
       </div>
       <div class="day-route">🇭🇰 香港 → 🇫🇮 赫爾辛基（夜機）</div>
@@ -150,7 +151,7 @@ footer a:hover { text-decoration: underline; }
     <!-- Day 2 -->
     <div class="day-card day-transit">
       <div class="day-header">
-        <div><span class="day-num">Day 2</span><br><span class="day-date">8月29日 星期六</span></div>
+        <div><span class="day-num">Day 2</span><br><span class="day-date">8月27日 星期四</span></div>
         <span class="day-country country-estonia">🇫🇮→🇪🇪</span>
       </div>
       <div class="day-route">抵達赫爾辛基 → 渡輪直達塔林 · 下午+晚上老城探索</div>
@@ -167,7 +168,7 @@ footer a:hover { text-decoration: underline; }
     <!-- Day 3 -->
     <div class="day-card day-transit">
       <div class="day-header">
-        <div><span class="day-num">Day 3</span><br><span class="day-date">8月30日 星期日</span></div>
+        <div><span class="day-num">Day 3</span><br><span class="day-date">8月28日 星期五</span></div>
         <span class="day-country country-estonia">🇪🇪→🇫🇮</span>
       </div>
       <div class="day-route">塔林上午收尾 → 午後渡輪返回赫爾辛基 · 傍晚市區初探</div>
@@ -181,113 +182,142 @@ footer a:hover { text-decoration: underline; }
     </div>
 
     <!-- Day 4 -->
-    <div class="day-card day-finland">
+    <div class="day-card day-transit">
       <div class="day-header">
-        <div><span class="day-num">Day 4</span><br><span class="day-date">8月31日 星期一</span></div>
-        <span class="day-country country-finland">🇫🇮 芬蘭</span>
+        <div><span class="day-num">Day 4</span><br><span class="day-date">8月29日 星期六</span></div>
+        <span class="day-country country-transit">🇫🇮→🇦🇹</span>
       </div>
-      <div class="day-route">赫爾辛基全日探索 (Day 1)</div>
+      <div class="day-route">赫爾辛基全日探索 → 傍晚飛維也納</div>
       <ul class="day-activities">
         <li><i class="fa-solid fa-store"></i> <strong>市集廣場 Kauppatori</strong> <sup class="mk-badge mk-finland">7</sup> — 波羅的海鮮魚湯 Lohikeitto、馴鹿肉、當地手工藝</li>
         <li><i class="fa-solid fa-ferry"></i> <strong>芬蘭堡 Suomenlinna</strong> <sup class="mk-badge mk-finland">8</sup> — UNESCO 世界遺產海上要塞 (市集廣場搭渡輪 15 分鐘)</li>
         <li><i class="fa-solid fa-church"></i> <strong>岩石教堂 Temppeliaukio</strong> <sup class="mk-badge mk-finland">9</sup> — 整座教堂鑿入天然岩石中，絕佳音響效果</li>
-        <li><i class="fa-solid fa-hot-tub"></i> <strong>Löyly 桑拿</strong> <sup class="mk-badge mk-finland">10</sup> — 設計感海濱桑拿，芬蘭必體驗！波羅的海冷水 plunge</li>
-        <li><i class="fa-solid fa-mug-hot"></i> 芬蘭 Fika 時光 — 肉桂卷 Korvapuusti + 咖啡</li>
+        <li><i class="fa-solid fa-hot-tub"></i> <strong>Löyly 桑拿</strong> <sup class="mk-badge mk-finland">10</sup> — 設計感海濱桑拿，芬蘭必體驗！</li>
+        <li><i class="fa-solid fa-plane-departure"></i> 傍晚前往 <strong>赫爾辛基機場 HEL</strong> <sup class="mk-badge mk-finland">11</sup> · ✈ 飛往維也納</li>
       </ul>
-      <div class="day-transport"><i class="fa-solid fa-clock"></i> 步行 + 電車 (HSL Day Pass) · 來回芬蘭堡渡輪 15min</div>
+      <div class="day-transport"><i class="fa-solid fa-clock"></i> 步行 + 電車 (HSL Day Pass) · ✈ AY1471 HEL→VIE 傍晚出發 ~2h30m</div>
     </div>
 
     <!-- Day 5 -->
-    <div class="day-card day-finland">
+    <div class="day-card day-austria">
       <div class="day-header">
-        <div><span class="day-num">Day 5</span><br><span class="day-date">9月1日 星期二</span></div>
-        <span class="day-country country-finland">🇫🇮 芬蘭</span>
+        <div><span class="day-num">Day 5</span><br><span class="day-date">8月30日 星期日</span></div>
+        <span class="day-country country-austria">🇦🇹 奧地利</span>
       </div>
-      <div class="day-route">赫爾辛基悠閒探索 (Day 2)</div>
+      <div class="day-route">維也納全日探索 (Day 1) · 🚗 取車</div>
       <ul class="day-activities">
-        <li><i class="fa-solid fa-book"></i> <strong>Oodi 中央圖書館</strong> <sup class="mk-badge mk-finland">11</sup> — 獲獎現代建築，不只是一座圖書館</li>
-        <li><i class="fa-solid fa-paint-brush"></i> <strong>設計區 Design District</strong> — Marimekko、Iittala、Artek 芬蘭設計品牌旗艦店</li>
-        <li><i class="fa-solid fa-shop"></i> <strong>Old Market Hall Vanha Kauppahalli</strong> — 百年室內市場，三文魚湯午餐</li>
-        <li><i class="fa-solid fa-monument"></i> Uspenski 大教堂 — 西歐最大東正教堂，紅磚金頂</li>
-        <li><i class="fa-solid fa-mug-hot"></i> 下午自由時間 · 咖啡小歇 · 補回未去的景點</li>
+        <li><i class="fa-solid fa-car"></i> 上午：🚗 維也納市區取車（未來幾天自駕全靠它）</li>
+        <li><i class="fa-solid fa-crown"></i> <strong>美泉宮 Schönbrunn</strong> <sup class="mk-badge mk-austria">12</sup> — 哈布斯堡王朝夏宮，奧地利最著名的皇宮</li>
+        <li><i class="fa-solid fa-palette"></i> <strong>美景宮 Belvedere</strong> <sup class="mk-badge mk-austria">13</sup> — Klimt《吻》收藏地，巴洛克花園</li>
+        <li><i class="fa-solid fa-shop"></i> Naschmarkt 市集 — 維也納最熱鬧的露天市場，各式美食攤位</li>
+        <li><i class="fa-solid fa-music"></i> 傍晚：維也納老城漫步 · 格拉本大街 · 霍夫堡夜景</li>
       </ul>
-      <div class="day-transport"><i class="fa-solid fa-clock"></i> 步行 + 電車 · 輕鬆漫遊赫爾辛基</div>
+      <div class="day-transport"><i class="fa-solid fa-clock"></i> 🚗 自駕 · 美泉宮建議預留 3-4hr · 市區景點車程各 10-15min</div>
     </div>
 
     <!-- Day 6 -->
-    <div class="day-card day-transit">
+    <div class="day-card day-austria">
       <div class="day-header">
-        <div><span class="day-num">Day 6</span><br><span class="day-date">9月2日 星期三</span></div>
-        <span class="day-country country-transit">🇫🇮 + 🚢</span>
+        <div><span class="day-num">Day 6</span><br><span class="day-date">8月31日 星期一</span></div>
+        <span class="day-country country-austria">🇦🇹 奧地利</span>
       </div>
-      <div class="day-route">赫爾辛基半日 → 下午登過夜渡輪至斯德哥爾摩</div>
+      <div class="day-route">維也納上午 → 🚗 自駕前往哈修塔特 (Hallstatt)</div>
       <ul class="day-activities">
-        <li><i class="fa-solid fa-camera"></i> 上午：最後的赫爾辛基漫步 · 補回未去的角落</li>
-        <li><i class="fa-solid fa-mug-hot"></i> 最後的芬蘭 Fika · 咖啡 + 肉桂卷</li>
-        <li><i class="fa-solid fa-ship"></i> 16:00 前往 <strong>Värtahamnen 渡輪碼頭</strong> <sup class="mk-badge mk-finland">12</sup> · 16:45 登船</li>
-        <li><i class="fa-solid fa-champagne-glasses"></i> <strong>Tallink Silja Line / Viking Line</strong> 過夜渡輪 — 艙房、自助晚餐、免稅店、波羅的海日落</li>
+        <li><i class="fa-solid fa-church"></i> 上午：<strong>史蒂芬大教堂 Stephansdom</strong> <sup class="mk-badge mk-austria">14</sup> — 維也納心臟地標，彩色屋頂馬賽克 · 登南塔俯瞰全城</li>
+        <li><i class="fa-solid fa-building-columns"></i> 霍夫堡 Hofburg — 哈布斯堡冬宮 · 英雄廣場 · Sacher 咖啡館</li>
+        <li><i class="fa-solid fa-car"></i> 午後：🚗 出發前往哈修塔特 (約 3.5 小時 · 沿途奧地利鄉村風光)</li>
+        <li><i class="fa-solid fa-water"></i> 傍晚：抵達 <strong>哈修塔特 Hallstatt</strong> <sup class="mk-badge mk-austria">15</sup> · 湖邊散步 · 入住湖區小鎮</li>
       </ul>
-      <div class="day-transport"><i class="fa-solid fa-ferry"></i> 🚢 赫爾辛基 → 斯德哥爾摩 · 約 17 小時 · 傍晚上船，次日 10:00 抵達</div>
+      <div class="day-transport"><i class="fa-solid fa-clock"></i> 🚗 維也納 → Hallstatt 約 3.5hr (300km) · 沿途可停靠休息</div>
     </div>
 
     <!-- Day 7 -->
-    <div class="day-card day-sweden">
+    <div class="day-card day-austria">
       <div class="day-header">
-        <div><span class="day-num">Day 7</span><br><span class="day-date">9月3日 星期四</span></div>
-        <span class="day-country country-sweden">🇸🇪 瑞典</span>
+        <div><span class="day-num">Day 7</span><br><span class="day-date">9月1日 星期二</span></div>
+        <span class="day-country country-austria">🇦🇹 奧地利</span>
       </div>
-      <div class="day-route">抵達斯德哥爾摩 · 老城全日探索 (Day 1)</div>
+      <div class="day-route">哈修塔特全日探索</div>
       <ul class="day-activities">
-        <li><i class="fa-solid fa-anchor"></i> 10:00 渡輪抵達斯德哥爾摩</li>
-        <li><i class="fa-solid fa-person-walking"></i> <strong>Gamla Stan 老城</strong> <sup class="mk-badge mk-sweden">13</sup> — 歐洲保存最完好的中世紀古城，鵝卵石小巷、彩色建築</li>
-        <li><i class="fa-solid fa-landmark"></i> Stortorget 大廣場 — 諾貝爾博物館所在地，經典彩色立面拍照點</li>
-        <li><i class="fa-solid fa-crown"></i> <strong>瑞典皇宮 Kungliga Slottet</strong> <sup class="mk-badge mk-sweden">14</sup> — 歐洲最大宮殿之一，衛兵換崗儀式</li>
-        <li><i class="fa-solid fa-ship"></i> <strong>瓦薩博物館 Vasamuseet</strong> <sup class="mk-badge mk-sweden">15</sup> — 17世紀沉船完整打撈，世界唯一保存完好的古戰船</li>
-        <li><i class="fa-solid fa-archway"></i> Mårten Trotzigs Gränd — 全城最窄小巷 (僅 90cm 寬)</li>
-        <li><i class="fa-solid fa-mug-hot"></i> 瑞典 Fika 咖啡時光 — 肉桂卷 + 咖啡</li>
+        <li><i class="fa-solid fa-binoculars"></i> <strong>天空步道 Welterbeblick</strong> <sup class="mk-badge mk-austria">16</sup> — 搭纜車上山，360° 俯瞰哈修塔特湖與小鎮</li>
+        <li><i class="fa-solid fa-gem"></i> <strong>鹽礦 Salzwelten</strong> — 世界最古老鹽礦，礦工滑梯體驗</li>
+        <li><i class="fa-solid fa-camera"></i> 經典明信片角度 Aussichtspunkt — Hallstatt 標誌性全景拍攝點</li>
+        <li><i class="fa-solid fa-ship"></i> 哈修塔特湖遊船 — 從湖上看小鎮，另一種視角</li>
+        <li><i class="fa-solid fa-utensils"></i> 晚餐：湖區餐廳 · 奧地利鱒魚 + 當地啤酒</li>
       </ul>
-      <div class="day-transport"><i class="fa-solid fa-clock"></i> 全程步行 · 老城 + Djurgården 島</div>
+      <div class="day-transport"><i class="fa-solid fa-clock"></i> 🚗 小鎮周邊可步行 · 纜車上山 · 鹽礦參觀約 2hr</div>
     </div>
 
     <!-- Day 8 -->
-    <div class="day-card day-sweden">
+    <div class="day-card day-austria">
       <div class="day-header">
-        <div><span class="day-num">Day 8</span><br><span class="day-date">9月4日 星期五</span></div>
-        <span class="day-country country-sweden">🇸🇪 瑞典</span>
+        <div><span class="day-num">Day 8</span><br><span class="day-date">9月2日 星期三</span></div>
+        <span class="day-country country-austria">🇦🇹 奧地利</span>
       </div>
-      <div class="day-route">斯德哥爾摩探索 (Day 2) — 市政廳 · 動物園島 · 博物館</div>
+      <div class="day-route">湖區探索：聖沃夫岡 · 聖吉爾根</div>
       <ul class="day-activities">
-        <li><i class="fa-solid fa-building-columns"></i> <strong>市政廳 Stadshuset</strong> <sup class="mk-badge mk-sweden">16</sup> — 諾貝爾獎晚宴場地，登塔俯瞰全城</li>
-        <li><i class="fa-solid fa-tree"></i> <strong>Djurgården 動物園島</strong> — 斯德哥爾摩的綠肺，水濱散步</li>
-        <li><i class="fa-solid fa-landmark"></i> <strong>Skansen 露天博物館</strong> — 世界最古老的露天博物館，瑞典歷史建築群 + 北歐動物園</li>
-        <li><i class="fa-solid fa-palette"></i> <strong>Fotografiska 攝影博物館</strong> — 世界級當代攝影藝術中心，海濱咖啡廳日落</li>
-        <li><i class="fa-solid fa-shop"></i> <strong>Östermalmshallen 市場</strong> — 百年室內市場，瑞典海鮮與肉丸晚餐</li>
+        <li><i class="fa-solid fa-car"></i> 🚗 Hallstatt → <strong>聖沃夫岡 St. Wolfgang</strong> <sup class="mk-badge mk-austria">17</sup> (約 35min)</li>
+        <li><i class="fa-solid fa-train"></i> <strong>夏夫堡登山火車 Schafbergbahn</strong> — 奧地利最陡的蒸汽齒輪火車，山頂俯瞰七湖全景</li>
+        <li><i class="fa-solid fa-archway"></i> 白馬酒店 Weisses Rössl — 著名輕歌劇背景，湖邊經典場景</li>
+        <li><i class="fa-solid fa-water"></i> 下午：🚗 前往 <strong>聖吉爾根 St. Gilgen</strong> (約 15min) — 莫扎特母親故鄉 · 沃夫岡湖畔最美小鎮</li>
+        <li><i class="fa-solid fa-mug-hot"></i> 湖邊咖啡館 · 享受悠閒湖區午後</li>
       </ul>
-      <div class="day-transport"><i class="fa-solid fa-clock"></i> 步行 + 電車 · Djurgården 可搭渡輪前往</div>
+      <div class="day-transport"><i class="fa-solid fa-clock"></i> 🚗 Hallstatt → St. Wolfgang ~35min → St. Gilgen ~15min · 登山火車來回約 3.5hr</div>
     </div>
 
     <!-- Day 9 -->
-    <div class="day-card day-sweden">
+    <div class="day-card day-austria">
       <div class="day-header">
-        <div><span class="day-num">Day 9</span><br><span class="day-date">9月5日 星期六</span></div>
-        <span class="day-country country-sweden">🇸🇪 瑞典</span>
+        <div><span class="day-num">Day 9</span><br><span class="day-date">9月3日 星期四</span></div>
+        <span class="day-country country-austria">🇦🇹 奧地利</span>
       </div>
-      <div class="day-route">斯德哥爾摩悠閒日 (Day 3) → 傍晚飛赫爾辛基轉機返港</div>
+      <div class="day-route">湖區上午 → 🚗 自駕前往薩爾茨堡 · 老城下午探索</div>
       <ul class="day-activities">
-        <li><i class="fa-solid fa-ship"></i> <strong>斯德哥爾摩群島遊船</strong> — 2-3 小時遊船，穿梭 30,000 個島嶼之間 (Strömma 經典線路)</li>
-        <li><i class="fa-solid fa-camera"></i> Monteliusvägen 觀景台 — 俯瞰老城 + 市政廳全景，最佳拍照點</li>
-        <li><i class="fa-solid fa-hippo"></i> <strong>Södermalm 南島</strong> — 斯德哥爾摩的 hipster 區，獨立咖啡館、復古店、街頭藝術</li>
-        <li><i class="fa-solid fa-mug-hot"></i> 最後的瑞典 Fika · 南島咖啡館小歇</li>
-        <li><i class="fa-solid fa-car"></i> 傍晚前往 <strong>ARN 機場</strong> <sup class="mk-badge mk-sweden">17</sup> (Arlanda Express 20min)</li>
-        <li><i class="fa-solid fa-plane"></i> <strong>AY818</strong> ARN 21:10 → HEL 22:20</li>
+        <li><i class="fa-solid fa-water"></i> 上午：湖區最後時光 · 可選 Bad Ischl 溫泉小鎮停留 (弗朗茨·約瑟夫大帝夏宮)</li>
+        <li><i class="fa-solid fa-car"></i> 🚗 湖區 → 薩爾茨堡 (約 1 小時)</li>
+        <li><i class="fa-solid fa-person-walking"></i> 下午：<strong>薩爾茨堡老城</strong> <sup class="mk-badge mk-austria">18</sup> — UNESCO 世界遺產 · Getreidegasse 穀物巷</li>
+        <li><i class="fa-solid fa-music"></i> 莫扎特出生地 Mozarts Geburtshaus — 音樂神童故居</li>
+        <li><i class="fa-solid fa-church"></i> 薩爾茨堡大教堂 Salzburger Dom — 莫扎特受洗地，巴洛克傑作</li>
       </ul>
-      <div class="day-transport"><i class="fa-solid fa-clock"></i> 遊船 ~2-3hr · Arlanda Express 20min · ✈ AY818 1h10m · 赫爾辛基轉機 2h15m</div>
+      <div class="day-transport"><i class="fa-solid fa-clock"></i> 🚗 湖區 → 薩爾茨堡約 1hr · 老城步行可達各景點</div>
     </div>
 
     <!-- Day 10 -->
+    <div class="day-card day-austria">
+      <div class="day-header">
+        <div><span class="day-num">Day 10</span><br><span class="day-date">9月4日 星期五</span></div>
+        <span class="day-country country-austria">🇦🇹 奧地利</span>
+      </div>
+      <div class="day-route">薩爾茨堡全日探索：要塞 · 米拉貝爾宮</div>
+      <ul class="day-activities">
+        <li><i class="fa-solid fa-chess-rook"></i> <strong>薩爾茨堡要塞 Festung Hohensalzburg</strong> <sup class="mk-badge mk-austria">19</sup> — 歐洲保存最完好的中世紀城堡之一，搭纜車上山</li>
+        <li><i class="fa-solid fa-crown"></i> <strong>米拉貝爾宮 Schloss Mirabell</strong> <sup class="mk-badge mk-austria">20</sup> — Sound of Music 拍攝地 · 巴洛克花園 · 大主教宮殿</li>
+        <li><i class="fa-solid fa-tree"></i> 可選：海爾布倫宮 Hellbrunn — 趣味噴泉花園（市郊 15min 車程）</li>
+        <li><i class="fa-solid fa-beer-mug-empty"></i> 晚餐：Augustiner Bräu 修道院啤酒廠 — 奧地利最古老的啤酒館！</li>
+      </ul>
+      <div class="day-transport"><i class="fa-solid fa-clock"></i> 🚗 要塞纜車 + 步行 · 市區景點集中 · 可選國王湖一日遊 (車程 40min)</div>
+    </div>
+
+    <!-- Day 11 -->
+    <div class="day-card day-transit">
+      <div class="day-header">
+        <div><span class="day-num">Day 11</span><br><span class="day-date">9月5日 星期六</span></div>
+        <span class="day-country country-transit">🇦🇹 ✈ 🇭🇰</span>
+      </div>
+      <div class="day-route">薩爾茨堡上午 → 🚗 自駕返回維也納機場 · 傍晚航班返港</div>
+      <ul class="day-activities">
+        <li><i class="fa-solid fa-mug-hot"></i> 上午：最後的奧地利咖啡時光 · Café Tomaselli 薩爾茨堡最老咖啡館</li>
+        <li><i class="fa-solid fa-car"></i> 午後：🚗 薩爾茨堡 → <strong>維也納機場 VIE</strong> <sup class="mk-badge mk-austria">21</sup> (約 3-3.5hr) · 機場還車</li>
+        <li><i class="fa-solid fa-plane-departure"></i> ✈ <strong>AY1472</strong> 維也納(VIE) 19:05 → 赫爾辛基(HEL) 22:35<br><small style="color:#64748b">Finnair Airbus A320 · 2h30m</small></li>
+        <li><i class="fa-solid fa-clock"></i> 赫爾辛基轉機 · AY99 00:35 起飛返港</li>
+      </ul>
+      <div class="day-transport"><i class="fa-solid fa-clock"></i> 🚗 薩爾茨堡 → VIE 約 3hr · ✈ AY1472 VIE→HEL 2h30m · 轉機 2hr</div>
+    </div>
+
+    <!-- Day 12 -->
     <div class="day-card day-flight">
       <div class="day-header">
-        <div><span class="day-num">Day 10</span><br><span class="day-date">9月6日 星期日</span></div>
+        <div><span class="day-num">Day 12</span><br><span class="day-date">9月6日 星期日</span></div>
         <span class="day-country country-transit">✈ 返港</span>
       </div>
       <div class="day-route">赫爾辛基 → 香港 · AY99 直航返港</div>
@@ -303,44 +333,41 @@ footer a:hover { text-decoration: underline; }
     <div class="section-title"><i class="fa-solid fa-route"></i> 交通總覽</div>
     <div class="transport-grid">
       <div class="transport-card">
-        <h4><i class="fa-solid fa-plane" style="color:#8b5cf6;"></i> ✈ 去程航班 (8月28日)</h4>
+        <h4><i class="fa-solid fa-plane" style="color:#8b5cf6;"></i> ✈ 去程航班 (8月26日)</h4>
         <div class="flight-row"><span>HKG → HEL</span><span class="flight-no">AY100</span><span class="flight-time">20:55→05:35 (+1) · 13h40m</span></div>
-        <div class="note">Finnair · Airbus A350-900 · 每日一班直飛 · 8月29日早上抵達赫爾辛基</div>
+        <div class="note">Finnair · Airbus A350-900 · 每日一班直飛 · 8月27日早上抵達赫爾辛基</div>
       </div>
       <div class="transport-card">
-        <h4><i class="fa-solid fa-plane-arrival" style="color:#8b5cf6;"></i> ✈ 回程航班 (9月5-6日)</h4>
-        <div class="flight-row"><span>ARN → HEL</span><span class="flight-no">AY818</span><span class="flight-time">21:10→22:20 · 1h10m</span></div>
+        <h4><i class="fa-solid fa-plane-arrival" style="color:#8b5cf6;"></i> ✈ 中段航班 (8月29日)</h4>
+        <div class="flight-row"><span>HEL → VIE</span><span class="flight-no">AY1471</span><span class="flight-time">傍晚出發 · ~2h30m</span></div>
+        <div class="note">Finnair · 赫爾辛基直飛維也納 · 晚上抵達維也納</div>
+      </div>
+      <div class="transport-card">
+        <h4><i class="fa-solid fa-plane-departure" style="color:#8b5cf6;"></i> ✈ 回程航班 (9月5-6日)</h4>
+        <div class="flight-row"><span>VIE → HEL</span><span class="flight-no">AY1472</span><span class="flight-time">19:05→22:35 · 2h30m</span></div>
         <div class="flight-row"><span>HEL → HKG</span><span class="flight-no">AY99</span><span class="flight-time">00:35→17:40 · 12h05m</span></div>
-        <div class="note">Finnair · A321 + A350 · 赫爾辛基中轉 ~2h15m · 9月6日 17:40 抵港 · AY99 每日營運</div>
+        <div class="note">Finnair · A320 + A350 · 赫爾辛基中轉 ~2hr · 9月6日 17:40 抵港 · AY99 每日營運</div>
       </div>
       <div class="transport-card">
         <h4><i class="fa-solid fa-ferry" style="color:#f59e0b;"></i> 🚢 渡輪安排</h4>
         <div class="flight-row"><span>赫爾辛基 → 塔林</span><span>Tallink Megastar</span><span class="flight-time">~2h · 早班出發</span></div>
         <div class="flight-row"><span>塔林 → 赫爾辛基</span><span>Tallink Megastar</span><span class="flight-time">~2h · 午後出發</span></div>
-        <div class="flight-row"><span>赫爾辛基 → 斯德哥爾摩</span><span>Tallink Silja / Viking Line</span><span class="flight-time">~17h · 16:45→10:00</span></div>
-        <div class="note">過夜渡輪含艙房 · Tallink Megastar 約 €41 起 · 過夜渡輪約 €160-€640 (含艙房)</div>
+        <div class="note">Tallink Megastar 約 €41 起 · 全年每日多班 · 提前網上購票更優惠</div>
       </div>
       <div class="transport-card">
-        <h4><i class="fa-solid fa-train-subway" style="color:#10b981;"></i> 🚇 市內交通</h4>
-        <div class="flight-row"><span>赫爾辛基機場 → 市中心</span><span>HSL 火車</span><span class="flight-time">~30min</span></div>
-        <div class="flight-row"><span>斯德哥爾摩 → ARN</span><span>Arlanda Express</span><span class="flight-time">~20min</span></div>
-        <div class="note">赫爾辛基 HSL Day Pass · 斯德哥爾摩 SL Access Card · 三城老城均步行可達</div>
+        <h4><i class="fa-solid fa-car" style="color:#10b981;"></i> 🚗 奧地利自駕</h4>
+        <div class="flight-row"><span>取車</span><span>維也納市區</span><span class="flight-time">8月30日上午</span></div>
+        <div class="flight-row"><span>還車</span><span>維也納機場 VIE</span><span class="flight-time">9月5日下午</span></div>
+        <div class="flight-row"><span>總車程</span><span>~750km</span><span class="flight-time">約 6 天</span></div>
+        <div class="note">維也納 → Hallstatt (300km) → St. Wolfgang (35km) → 薩爾茨堡 (60km) → VIE (300km)</div>
       </div>
-    </div>
-
-    <div class="section-title" style="margin-top: 24px;"><i class="fa-solid fa-circle-exclamation"></i> 備選回程方案</div>
-    <div class="transport-card" style="max-width:100%;">
-      <h4><i class="fa-solid fa-plane" style="color:#8b5cf6;"></i> 土耳其航空經伊斯坦布爾中轉</h4>
-      <div class="flight-row"><span>ARN → IST</span><span class="flight-no">TK1796</span><span class="flight-time">19:30→23:55 · 3h25m</span></div>
-      <div class="flight-row"><span>IST → HKG</span><span class="flight-no">TK70</span><span class="flight-time">01:35→17:25 (+1) · 9h50m</span></div>
-      <div class="note">每日營運 · IST機場免簽證轉機 · 總行程約 22 小時</div>
     </div>
   </div>
 </div>
 
 <footer>
-  <p>旅行資訊來源：Rick Steves Travel Forum · lovetravellingblog.com · theblogtrotter.com · day-trips-from.com · Wikivoyage · Wikipedia</p>
-  <p>地圖：<a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> · 航班資料參考 Finnair / Tallink Silja / Turkish Airlines 官網</p>
+  <p>旅行資訊來源：Rick Steves Travel Forum · lovetravellingblog.com · theblogtrotter.com · Wikivoyage · Wikipedia</p>
+  <p>地圖：<a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> · 航班資料參考 Finnair / Tallink Silja 官網</p>
   <p style="margin-top: 6px;">Made for personal travel planning · 2026</p>
 </footer>
 
@@ -348,13 +375,12 @@ footer a:hover { text-decoration: underline; }
 <script>
 function img(name) { return 'images/' + name; }
 
-// Markers 0-17: Tallinn first, then Helsinki, then Stockholm
 var markers = [
   { id: 0, lat: 22.308, lng: 113.918, name: '香港國際機場 HKG', en: 'Hong Kong Intl Airport',
     desc: '出發點 · Finnair AY100 直飛赫爾辛基',
     img: '', link: '', cls: 'marker-hk', day: 1 },
 
-  // Tallinn
+  // Tallinn (Estonia) — markers 1-4
   { id: 1, lat: 59.444, lng: 24.759, name: '塔林客運碼頭', en: 'Tallinn Passenger Port (Vanasadam)',
     desc: '從赫爾辛基搭渡輪抵達 · 步行 15 分鐘到老城',
     img: '', link: '', cls: 'marker-transport', day: 2 },
@@ -377,7 +403,7 @@ var markers = [
     link: 'https://en.wikipedia.org/wiki/Alexander_Nevsky_Cathedral,_Tallinn',
     cls: 'marker-estonia', day: 3 },
 
-  // Helsinki
+  // Helsinki (Finland) — markers 5-11
   { id: 5, lat: 60.154, lng: 24.921, name: '赫爾辛基西港碼頭', en: 'Helsinki West Harbour (Länsisatama)',
     desc: 'Tallink Silja 渡輪來回塔林 · 距市中心約 3km',
     img: '', link: '', cls: 'marker-transport', day: 3 },
@@ -411,47 +437,65 @@ var markers = [
     img: '', link: 'https://www.loylyhelsinki.fi/en/',
     cls: 'marker-finland', day: 4 },
 
-  { id: 11, lat: 60.174, lng: 24.938, name: 'Oodi 中央圖書館', en: 'Oodi Helsinki Central Library',
-    desc: '獲獎現代建築 · 市民共享空間 · 不只是圖書館',
-    img: '', link: 'https://en.wikipedia.org/wiki/Helsinki_Central_Library_Oodi',
-    cls: 'marker-finland', day: 5 },
+  { id: 11, lat: 60.317, lng: 24.963, name: '赫爾辛基機場 HEL', en: 'Helsinki-Vantaa Airport',
+    desc: '前往維也納出發點 · ✈ AY1471 HEL→VIE',
+    img: '', link: '', cls: 'marker-transport', day: 4 },
 
-  { id: 12, lat: 59.344, lng: 18.109, name: 'Värtahamnen 渡輪碼頭', en: 'Värtahamnen Ferry Terminal',
-    desc: 'Tallink Silja Line 出發港 · 過夜渡輪前往斯德哥爾摩 (16:45 啟航)',
-    img: '', link: 'https://en.wikipedia.org/wiki/Ports_of_the_Baltic_Sea',
-    cls: 'marker-transport', day: 6 },
+  // Vienna (Austria) — markers 12-14
+  { id: 12, lat: 48.185, lng: 16.312, name: '美泉宮 Schönbrunn', en: 'Schönbrunn Palace',
+    desc: '哈布斯堡王朝夏宮 · UNESCO 世界遺產 · 奧地利最著名的巴洛克皇宮',
+    img: '', link: 'https://en.wikipedia.org/wiki/Schönbrunn_Palace',
+    cls: 'marker-austria', day: 5 },
 
-  // Stockholm
-  { id: 13, lat: 59.325, lng: 18.071, name: 'Gamla Stan 老城', en: 'Gamla Stan (Old Town)',
-    desc: '歐洲保存最完好的中世紀古城之一，鵝卵石小巷、彩色建築',
-    img: img('gamla_stan.jpg'),
-    link: 'https://en.wikivoyage.org/wiki/Stockholm/Gamla_stan',
-    cls: 'marker-sweden', day: 7 },
+  { id: 13, lat: 48.191, lng: 16.381, name: '美景宮 Belvedere', en: 'Belvedere Palace',
+    desc: 'Klimt《吻》收藏地 · 上美景宮 + 下美景宮 · 巴洛克花園美景',
+    img: '', link: 'https://en.wikipedia.org/wiki/Belvedere,_Vienna',
+    cls: 'marker-austria', day: 5 },
 
-  { id: 14, lat: 59.327, lng: 18.072, name: '瑞典皇宮', en: 'Kungliga Slottet (Royal Palace)',
-    desc: '歐洲最大宮殿之一，巴洛克風格。每日衛兵換崗儀式',
-    img: img('royal_palace.jpg'),
-    link: 'https://en.wikipedia.org/wiki/Stockholm_Palace',
-    cls: 'marker-sweden', day: 7 },
+  { id: 14, lat: 48.208, lng: 16.373, name: '史蒂芬大教堂', en: "St. Stephen's Cathedral (Stephansdom)",
+    desc: '維也納心臟地標 · 哥德式彩色屋頂馬賽克 · 南塔 343 級階梯登頂',
+    img: '', link: 'https://en.wikipedia.org/wiki/St._Stephen%27s_Cathedral,_Vienna',
+    cls: 'marker-austria', day: 6 },
 
-  { id: 15, lat: 59.328, lng: 18.091, name: '瓦薩博物館', en: 'Vasamuseet (Vasa Museum)',
-    desc: '世界唯一保存完好的17世紀古戰船，瑞典最受歡迎的博物館',
-    img: img('vasa_museum.jpg'),
-    link: 'https://en.wikipedia.org/wiki/Vasa_Museum',
-    cls: 'marker-sweden', day: 7 },
+  // Lake District (Austria) — markers 15-17
+  { id: 15, lat: 47.562, lng: 13.649, name: '哈修塔特 Hallstatt', en: 'Hallstatt',
+    desc: 'UNESCO 世界遺產 · 世界最美湖畔小鎮之一 · 7000年歷史',
+    img: '', link: 'https://en.wikipedia.org/wiki/Hallstatt',
+    cls: 'marker-austria', day: 6 },
 
-  { id: 16, lat: 59.327, lng: 18.055, name: '斯德哥爾摩市政廳', en: 'Stockholm City Hall (Stadshuset)',
-    desc: '諾貝爾獎年度晚宴場地，可登塔俯瞰全城',
-    img: img('city_hall.jpg'),
-    link: 'https://en.wikipedia.org/wiki/Stockholm_City_Hall',
-    cls: 'marker-sweden', day: 8 },
+  { id: 16, lat: 47.554, lng: 13.643, name: '天空步道 + 鹽礦', en: 'Hallstatt Skywalk & Salt Mine',
+    desc: '搭纜車上山 · 360° 俯瞰哈修塔特湖 · 世界最古老鹽礦探險',
+    img: '', link: 'https://en.wikipedia.org/wiki/Salzwelten',
+    cls: 'marker-austria', day: 7 },
 
-  { id: 17, lat: 59.652, lng: 17.931, name: '斯德哥爾摩阿蘭達機場 ARN', en: 'Stockholm Arlanda Airport',
-    desc: '返程出發 · AY818 → 赫爾辛基 · Arlanda Express 快線 20 分鐘到機場',
-    img: '', link: '', cls: 'marker-transport', day: 9 }
+  { id: 17, lat: 47.738, lng: 13.448, name: '聖沃夫岡 St. Wolfgang', en: 'St. Wolfgang',
+    desc: '夏夫堡登山火車站所在地 · 白馬酒店 · 沃夫岡湖畔最美小鎮',
+    img: '', link: 'https://en.wikipedia.org/wiki/St._Wolfgang_im_Salzkammergut',
+    cls: 'marker-austria', day: 8 },
+
+  // Salzburg (Austria) — markers 18-20
+  { id: 18, lat: 47.800, lng: 13.044, name: '薩爾茨堡老城', en: 'Salzburg Old Town (Altstadt)',
+    desc: 'UNESCO 世界遺產 · Getreidegasse 穀物巷 · 莫扎特出生地',
+    img: '', link: 'https://en.wikipedia.org/wiki/Historic_Centre_of_the_City_of_Salzburg',
+    cls: 'marker-austria', day: 9 },
+
+  { id: 19, lat: 47.795, lng: 13.047, name: '薩爾茨堡要塞', en: 'Hohensalzburg Fortress',
+    desc: '歐洲保存最完好的中世紀城堡之一 · 搭纜車上山 · 俯瞰全城美景',
+    img: '', link: 'https://en.wikipedia.org/wiki/Hohensalzburg_Fortress',
+    cls: 'marker-austria', day: 10 },
+
+  { id: 20, lat: 47.805, lng: 13.042, name: '米拉貝爾宮', en: 'Mirabell Palace & Gardens',
+    desc: 'Sound of Music 拍攝地 · 巴洛克花園 · 大主教宮殿',
+    img: '', link: 'https://en.wikipedia.org/wiki/Mirabell_Palace',
+    cls: 'marker-austria', day: 10 },
+
+  // Vienna Airport — marker 21
+  { id: 21, lat: 48.110, lng: 16.570, name: '維也納機場 VIE', en: 'Vienna International Airport',
+    desc: '🚗 還車地點 · ✈ AY1472 VIE→HEL 19:05 返程出發',
+    img: '', link: '', cls: 'marker-transport', day: 11 }
 ];
 
-var map = L.map('map', { zoomSnap: 0.25 }).setView([58.5, 20.0], 5.5);
+var map = L.map('map', { zoomSnap: 0.25 }).setView([52.0, 18.0], 4.5);
 L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
   attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> &copy; <a href="https://carto.com/">CARTO</a>',
   subdomains: 'abcd', maxZoom: 19
@@ -471,7 +515,7 @@ markers.forEach(function(m) {
     imgHtml = '<div class="popup-img-fallback"><i class="fa-solid fa-' +
               (m.cls === 'marker-transport' ? 'plane' : 'landmark') + '"></i></div>';
   }
-  var linkHtml = m.link ? '<a class="popup-link" href="' + m.link + '" target="_blank" rel="noopener">🔗 詳細介紹 →</a>' : '';
+  var linkHtml = m.link ? '<a class="popup-link" href="' + m.link + '" target="_blank" rel="noopener">🔗 Wikipedia 詳細介紹 →</a>' : '';
   var popupContent = imgHtml +
     '<div class="popup-title">' + m.name + '</div>' +
     '<div class="popup-subtitle">' + m.en + '</div>' +
@@ -481,24 +525,33 @@ markers.forEach(function(m) {
   markerLayers.push(marker);
 });
 
-// Route lines
-var flightLine1 = L.polyline(
+// Flight route: HKG → HEL
+L.polyline(
   [[22.308, 113.918], [60.317, 24.963]],
   { color: '#8b5cf6', weight: 3, dashArray: '10, 8', opacity: 0.7 }
 ).addTo(map);
 
-var ferryLine1 = L.polyline(
+// Ferry route: HEL → Tallinn
+L.polyline(
   [[60.154, 24.921], [59.444, 24.759]],
   { color: '#f59e0b', weight: 3, dashArray: '8, 6', opacity: 0.7 }
 ).addTo(map);
 
-var ferryLine2 = L.polyline(
-  [[60.154, 24.921], [59.344, 18.109]],
-  { color: '#f59e0b', weight: 3, dashArray: '8, 6', opacity: 0.7 }
+// Flight route: HEL → VIE
+L.polyline(
+  [[60.317, 24.963], [48.110, 16.570]],
+  { color: '#8b5cf6', weight: 3, dashArray: '10, 8', opacity: 0.7 }
 ).addTo(map);
 
-var flightLine2 = L.polyline(
-  [[59.652, 17.931], [60.317, 24.963], [22.308, 113.918]],
+// Driving route: Vienna → Hallstatt → St. Wolfgang → Salzburg → Vienna Airport
+L.polyline(
+  [[48.208, 16.373], [47.562, 13.649], [47.738, 13.448], [47.800, 13.044], [48.110, 16.570]],
+  { color: '#10b981', weight: 4, opacity: 0.6 }
+).addTo(map);
+
+// Flight route: VIE → HKG (via HEL)
+L.polyline(
+  [[48.110, 16.570], [60.317, 24.963], [22.308, 113.918]],
   { color: '#8b5cf6', weight: 3, dashArray: '10, 8', opacity: 0.7 }
 ).addTo(map);
 
@@ -549,15 +602,21 @@ var nameToMarker = {
   '芬蘭堡 Suomenlinna': 8,
   '岩石教堂 Temppeliaukio': 9,
   'Löyly 桑拿': 10,
-  'Oodi 中央圖書館': 11,
-  'Värtahamnen 渡輪碼頭': 12,
-  'Gamla Stan 老城': 13,
-  '瑞典皇宮 Kungliga Slottet': 14,
-  '瑞典皇宮': 14,
-  '瓦薩博物館 Vasamuseet': 15,
-  '瓦薩博物館': 15,
-  '市政廳 Stadshuset': 16,
-  'ARN 機場': 17
+  '赫爾辛基機場 HEL': 11,
+  '美泉宮 Schönbrunn': 12,
+  '美景宮 Belvedere': 13,
+  '史蒂芬大教堂 Stephansdom': 14,
+  '史蒂芬大教堂': 14,
+  '哈修塔特 Hallstatt': 15,
+  '天空步道 Welterbeblick': 16,
+  '鹽礦 Salzwelten': 16,
+  '聖沃夫岡 St. Wolfgang': 17,
+  '薩爾茨堡老城': 18,
+  '薩爾茨堡要塞 Festung Hohensalzburg': 19,
+  '薩爾茨堡要塞': 19,
+  '米拉貝爾宮 Schloss Mirabell': 20,
+  '米拉貝爾宮': 20,
+  '維也納機場 VIE': 21
 };
 
 document.querySelector('.itinerary-panel').addEventListener('click', function(e) {
