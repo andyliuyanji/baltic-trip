@@ -42,13 +42,17 @@ baltic-trip/
 | 8/28 (五) | 🇪🇪 塔林全日深度遊 Day 2 · 老城 · 博物館 |
 | 8/29 (六) | 🚢 早上渡輪塔林→赫爾辛基 → 赫爾辛基精華半日 → ✈ AY1475 16:55→18:20 飛維也納 |
 | 8/30 (日) | 🇦🇹 維也納 Day 1：美泉宮 · 美景宮 · 🚗 取車 |
-| 8/31 (一) | 🇦🇹 維也納上午 → 🚗 自駕前往哈修塔特 (~3.5h) |
-| 9/1 (二) | 🇦🇹 哈修塔特全日：天空步道 · 鹽礦 · 湖區遊船 |
-| 9/2 (三) | 🇦🇹 聖沃夫岡 · 夏夫堡登山火車 (1,783m 俯瞰七湖) · 聖吉爾根 |
-| 9/3 (四) | 🇦🇹 湖區慢行：Fuschlsee · Mondsee (Sound of Music 婚禮教堂) → 傍晚薩爾茨堡 |
-| 9/4 (五) | 🇦🇹 薩爾茨堡全日：要塞 · 老城 · 米拉貝爾宮 · 修道院啤酒廠 |
+| 8/31 (一) | 🇦🇹 維也納上午 → 🚗 自駕 → **Gosau** · 🏨 **COOEE alpin hotel** |
+| 9/1 (二) | 🇦🇹 Gosau → 途經 **Hallstatt 天空步道** → **Grundlsee** · 🏨 **MONDI Hotel am Grundlsee** |
+| 9/2 (三) | 🇦🇹 Grundlsee → **St. Wolfgang** · 🏨 **Hotel Peter** (2晚) |
+| 9/3 (四) | 🇦🇹 St. Wolfgang 全日：夏夫堡登山火車 + 沃夫岡湖遊船 |
+| 9/4 (五) | 🇦🇹 St. Wolfgang → 薩爾茨堡 (經 Fuschlsee/Mondsee 路过) · 🏨 **Hyperion Hotel** |
 | 9/5 (六) | 薩爾茨堡上午 → 🚗 SZG · ✈ LH1103 10:30→FRA · ✈ CX288 13:40→HKG |
 | 9/7 (一) | ✈ CX288 法蘭克福→香港 07:20 抵達 |
+
+> **已預訂 4 間酒店**：COOEE alpin hotel (Gosau, 8/31) · MONDI Hotel am Grundlsee (9/1) · Hotel Peter, St. Wolfgang (9/2-3) · Hyperion Hotel, Salzburg (9/4)
+>
+> Fuschlsee / Mondsee 設為路過點（不下車），重心放在各酒店附近
 
 ## 航班
 
